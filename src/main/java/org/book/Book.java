@@ -1,4 +1,4 @@
-package org.example.book;
+package org.book;
 
 public class Book {
     private int number;
@@ -55,4 +55,4 @@ public class Book {
 }
 
 
-// Add properties of number, title, author, genre, subGenre, publisher, timesBorrowed
+// Add properties of number, title, author, genre, subGenre, publisher, timesBorrowed FINISHED

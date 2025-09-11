@@ -85,7 +85,6 @@ public class User {
     }
 }
 
-
 // Add properties of userId, name, isAdmin, dateOfBirth FINISHED
 // Add method borrowBook
 // Add method returnBook

@@ -1,0 +1,961 @@
+[ {
+  "number" : 1,
+  "title" : "Fundamentals of Wavelets",
+  "author" : "\"Goswami",
+  "genre" : " Jaideva\"",
+  "subGenre" : "tech",
+  "publisher" : "signal_processing",
+  "timesBorrowed" : 0
+}, {
+  "number" : 2,
+  "title" : "Data Smart",
+  "author" : "\"Foreman",
+  "genre" : " John\"",
+  "subGenre" : "tech",
+  "publisher" : "data_science",
+  "timesBorrowed" : 0
+}, {
+  "number" : 3,
+  "title" : "God Created the Integers",
+  "author" : "\"Hawking",
+  "genre" : " Stephen\"",
+  "subGenre" : "tech",
+  "publisher" : "mathematics",
+  "timesBorrowed" : 0
+}, {
+  "number" : 4,
+  "title" : "Superfreakonomics",
+  "author" : "\"Dubner",
+  "genre" : " Stephen\"",
+  "subGenre" : "science",
+  "publisher" : "economics",
+  "timesBorrowed" : 0
+}, {
+  "number" : 5,
+  "title" : "Orientalism",
+  "author" : "\"Said",
+  "genre" : " Edward\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "history",
+  "timesBorrowed" : 0
+}, {
+  "number" : 6,
+  "title" : "\"Nature of Statistical Learning Theory",
+  "author" : " The\"",
+  "genre" : "\"Vapnik",
+  "subGenre" : " Vladimir\"",
+  "publisher" : "tech",
+  "timesBorrowed" : 0
+}, {
+  "number" : 7,
+  "title" : "Integration of the Indian States",
+  "author" : "\"Menon",
+  "genre" : " V P\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "history",
+  "timesBorrowed" : 0
+}, {
+  "number" : 8,
+  "title" : "\"Drunkard's Walk",
+  "author" : " The\"",
+  "genre" : "\"Mlodinow",
+  "subGenre" : " Leonard\"",
+  "publisher" : "science",
+  "timesBorrowed" : 0
+}, {
+  "number" : 9,
+  "title" : "Image Processing & Mathematical Morphology",
+  "author" : "\"Shih",
+  "genre" : " Frank\"",
+  "subGenre" : "tech",
+  "publisher" : "signal_processing",
+  "timesBorrowed" : 0
+}, {
+  "number" : 10,
+  "title" : "How to Think Like Sherlock Holmes",
+  "author" : "\"Konnikova",
+  "genre" : " Maria\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "psychology",
+  "timesBorrowed" : 0
+}, {
+  "number" : 11,
+  "title" : "Data Scientists at Work",
+  "author" : "Sebastian Gutierrez",
+  "genre" : "tech",
+  "subGenre" : "data_science",
+  "publisher" : "Apress",
+  "timesBorrowed" : 0
+}, {
+  "number" : 12,
+  "title" : "Slaughterhouse Five",
+  "author" : "\"Vonnegut",
+  "genre" : " Kurt\"",
+  "subGenre" : "fiction",
+  "publisher" : "classic",
+  "timesBorrowed" : 0
+}, {
+  "number" : 13,
+  "title" : "Birth of a Theorem",
+  "author" : "\"Villani",
+  "genre" : " Cedric\"",
+  "subGenre" : "science",
+  "publisher" : "mathematics",
+  "timesBorrowed" : 0
+}, {
+  "number" : 14,
+  "title" : "Structure & Interpretation of Computer Programs",
+  "author" : "\"Sussman",
+  "genre" : " Gerald\"",
+  "subGenre" : "tech",
+  "publisher" : "computer_science",
+  "timesBorrowed" : 0
+}, {
+  "number" : 15,
+  "title" : "\"Age of Wrath",
+  "author" : " The\"",
+  "genre" : "\"Eraly",
+  "subGenre" : " Abraham\"",
+  "publisher" : "nonfiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 16,
+  "title" : "\"Trial",
+  "author" : " The\"",
+  "genre" : "\"Kafka",
+  "subGenre" : " Frank\"",
+  "publisher" : "fiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 17,
+  "title" : "Statistical Decision Theory'",
+  "author" : "\"Pratt",
+  "genre" : " John\"",
+  "subGenre" : "tech",
+  "publisher" : "data_science",
+  "timesBorrowed" : 0
+}, {
+  "number" : 18,
+  "title" : "Data Mining Handbook",
+  "author" : "\"Nisbet",
+  "genre" : " Robert\"",
+  "subGenre" : "tech",
+  "publisher" : "data_science",
+  "timesBorrowed" : 0
+}, {
+  "number" : 19,
+  "title" : "\"New Machiavelli",
+  "author" : " The\"",
+  "genre" : "\"Wells",
+  "subGenre" : " H. G.\"",
+  "publisher" : "fiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 20,
+  "title" : "Physics & Philosophy",
+  "author" : "\"Heisenberg",
+  "genre" : " Werner\"",
+  "subGenre" : "philosophy",
+  "publisher" : "science",
+  "timesBorrowed" : 0
+}, {
+  "number" : 21,
+  "title" : "Making Software",
+  "author" : "\"Oram",
+  "genre" : " Andy\"",
+  "subGenre" : "tech",
+  "publisher" : "computer_science",
+  "timesBorrowed" : 0
+}, {
+  "number" : 22,
+  "title" : "\"Analysis",
+  "author" : " Vol I\"",
+  "genre" : "\"Tao",
+  "subGenre" : " Terence\"",
+  "publisher" : "tech",
+  "timesBorrowed" : 0
+}, {
+  "number" : 23,
+  "title" : "Machine Learning for Hackers",
+  "author" : "\"Conway",
+  "genre" : " Drew\"",
+  "subGenre" : "tech",
+  "publisher" : "data_science",
+  "timesBorrowed" : 0
+}, {
+  "number" : 24,
+  "title" : "\"Signal and the Noise",
+  "author" : " The\"",
+  "genre" : "\"Silver",
+  "subGenre" : " Nate\"",
+  "publisher" : "tech",
+  "timesBorrowed" : 0
+}, {
+  "number" : 25,
+  "title" : "Python for Data Analysis",
+  "author" : "\"McKinney",
+  "genre" : " Wes\"",
+  "subGenre" : "tech",
+  "publisher" : "data_science",
+  "timesBorrowed" : 0
+}, {
+  "number" : 26,
+  "title" : "Introduction to Algorithms",
+  "author" : "\"Cormen",
+  "genre" : " Thomas\"",
+  "subGenre" : "tech",
+  "publisher" : "computer_science",
+  "timesBorrowed" : 0
+}, {
+  "number" : 27,
+  "title" : "\"Beautiful and the Damned",
+  "author" : " The\"",
+  "genre" : "\"Deb",
+  "subGenre" : " Siddhartha\"",
+  "publisher" : "nonfiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 28,
+  "title" : "\"Outsider",
+  "author" : " The\"",
+  "genre" : "\"Camus",
+  "subGenre" : " Albert\"",
+  "publisher" : "fiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 29,
+  "title" : "\"Complete Sherlock Holmes",
+  "author" : " The - Vol I\"",
+  "genre" : "\"Doyle",
+  "subGenre" : " Arthur Conan\"",
+  "publisher" : "fiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 30,
+  "title" : "\"Complete Sherlock Holmes",
+  "author" : " The - Vol II\"",
+  "genre" : "\"Doyle",
+  "subGenre" : " Arthur Conan\"",
+  "publisher" : "fiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 31,
+  "title" : "\"Wealth of Nations",
+  "author" : " The\"",
+  "genre" : "\"Smith",
+  "subGenre" : " Adam\"",
+  "publisher" : "science",
+  "timesBorrowed" : 0
+}, {
+  "number" : 32,
+  "title" : "\"Pillars of the Earth",
+  "author" : " The\"",
+  "genre" : "\"Follett",
+  "subGenre" : " Ken\"",
+  "publisher" : "fiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 33,
+  "title" : "Mein Kampf",
+  "author" : "\"Hitler",
+  "genre" : " Adolf\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "autobiography",
+  "timesBorrowed" : 0
+}, {
+  "number" : 34,
+  "title" : "\"Tao of Physics",
+  "author" : " The\"",
+  "genre" : "\"Capra",
+  "subGenre" : " Fritjof\"",
+  "publisher" : "science",
+  "timesBorrowed" : 0
+}, {
+  "number" : 35,
+  "title" : "Surely You're Joking Mr Feynman",
+  "author" : "\"Feynman",
+  "genre" : " Richard\"",
+  "subGenre" : "science",
+  "publisher" : "physics",
+  "timesBorrowed" : 0
+}, {
+  "number" : 36,
+  "title" : "\"Farewell to Arms",
+  "author" : " A\"",
+  "genre" : "\"Hemingway",
+  "subGenre" : " Ernest\"",
+  "publisher" : "fiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 37,
+  "title" : "\"Veteran",
+  "author" : " The\"",
+  "genre" : "\"Forsyth",
+  "subGenre" : " Frederick\"",
+  "publisher" : "fiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 38,
+  "title" : "False Impressions",
+  "author" : "\"Archer",
+  "genre" : " Jeffery\"",
+  "subGenre" : "fiction",
+  "publisher" : "novel",
+  "timesBorrowed" : 0
+}, {
+  "number" : 39,
+  "title" : "\"Last Lecture",
+  "author" : " The\"",
+  "genre" : "\"Pausch",
+  "subGenre" : " Randy\"",
+  "publisher" : "nonfiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 40,
+  "title" : "Return of the Primitive",
+  "author" : "\"Rand",
+  "genre" : " Ayn\"",
+  "subGenre" : "philosophy",
+  "publisher" : "objectivism",
+  "timesBorrowed" : 0
+}, {
+  "number" : 41,
+  "title" : "Jurassic Park",
+  "author" : "\"Crichton",
+  "genre" : " Michael\"",
+  "subGenre" : "fiction",
+  "publisher" : "novel",
+  "timesBorrowed" : 0
+}, {
+  "number" : 42,
+  "title" : "\"Russian Journal",
+  "author" : " A\"",
+  "genre" : "\"Steinbeck",
+  "subGenre" : " John\"",
+  "publisher" : "nonfiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 43,
+  "title" : "Tales of Mystery and Imagination",
+  "author" : "\"Poe",
+  "genre" : " Edgar Allen\"",
+  "subGenre" : "fiction",
+  "publisher" : "classic",
+  "timesBorrowed" : 0
+}, {
+  "number" : 44,
+  "title" : "Freakonomics",
+  "author" : "\"Dubner",
+  "genre" : " Stephen\"",
+  "subGenre" : "science",
+  "publisher" : "economics",
+  "timesBorrowed" : 0
+}, {
+  "number" : 45,
+  "title" : "\"Hidden Connections",
+  "author" : " The\"",
+  "genre" : "\"Capra",
+  "subGenre" : " Fritjof\"",
+  "publisher" : "science",
+  "timesBorrowed" : 0
+}, {
+  "number" : 46,
+  "title" : "\"Story of Philosophy",
+  "author" : " The\"",
+  "genre" : "\"Durant",
+  "subGenre" : " Will\"",
+  "publisher" : "philosophy",
+  "timesBorrowed" : 0
+}, {
+  "number" : 47,
+  "title" : "Asami Asami",
+  "author" : "\"Deshpande",
+  "genre" : " P L\"",
+  "subGenre" : "fiction",
+  "publisher" : "novel",
+  "timesBorrowed" : 0
+}, {
+  "number" : 48,
+  "title" : "Journal of a Novel",
+  "author" : "\"Steinbeck",
+  "genre" : " John\"",
+  "subGenre" : "fiction",
+  "publisher" : "classic",
+  "timesBorrowed" : 0
+}, {
+  "number" : 49,
+  "title" : "Once There Was a War",
+  "author" : "\"Steinbeck",
+  "genre" : " John\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "history",
+  "timesBorrowed" : 0
+}, {
+  "number" : 50,
+  "title" : "\"Moon is Down",
+  "author" : " The\"",
+  "genre" : "\"Steinbeck",
+  "subGenre" : " John\"",
+  "publisher" : "fiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 51,
+  "title" : "\"Brethren",
+  "author" : " The\"",
+  "genre" : "\"Grisham",
+  "subGenre" : " John\"",
+  "publisher" : "fiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 52,
+  "title" : "In a Free State",
+  "author" : "\"Naipaul",
+  "genre" : " V. S.\"",
+  "subGenre" : "fiction",
+  "publisher" : "novel",
+  "timesBorrowed" : 0
+}, {
+  "number" : 53,
+  "title" : "Catch 22",
+  "author" : "\"Heller",
+  "genre" : " Joseph\"",
+  "subGenre" : "fiction",
+  "publisher" : "classic",
+  "timesBorrowed" : 0
+}, {
+  "number" : 54,
+  "title" : "\"Complete Mastermind",
+  "author" : " The\"",
+  "genre" : "BBC",
+  "subGenre" : "nonfiction",
+  "publisher" : "trivia",
+  "timesBorrowed" : 0
+}, {
+  "number" : 55,
+  "title" : "Dylan on Dylan",
+  "author" : "\"Dylan",
+  "genre" : " Bob\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "autobiography",
+  "timesBorrowed" : 0
+}, {
+  "number" : 56,
+  "title" : "Soft Computing & Intelligent Systems",
+  "author" : "\"Gupta",
+  "genre" : " Madan\"",
+  "subGenre" : "tech",
+  "publisher" : "data_science",
+  "timesBorrowed" : 0
+}, {
+  "number" : 57,
+  "title" : "Textbook of Economic Theory",
+  "author" : "\"Stonier",
+  "genre" : " Alfred\"",
+  "subGenre" : "tech",
+  "publisher" : "economics",
+  "timesBorrowed" : 0
+}, {
+  "number" : 58,
+  "title" : "Econometric Analysis",
+  "author" : "\"Greene",
+  "genre" : " W. H.\"",
+  "subGenre" : "tech",
+  "publisher" : "economics",
+  "timesBorrowed" : 0
+}, {
+  "number" : 59,
+  "title" : "Learning OpenCV",
+  "author" : "\"Bradsky",
+  "genre" : " Gary\"",
+  "subGenre" : "tech",
+  "publisher" : "signal_processing",
+  "timesBorrowed" : 0
+}, {
+  "number" : 60,
+  "title" : "Data Structures Using C & C++",
+  "author" : "\"Tanenbaum",
+  "genre" : " Andrew\"",
+  "subGenre" : "tech",
+  "publisher" : "computer_science",
+  "timesBorrowed" : 0
+}, {
+  "number" : 61,
+  "title" : "\"Computer Vision",
+  "author" : " A Modern Approach\"",
+  "genre" : "\"Forsyth",
+  "subGenre" : " David\"",
+  "publisher" : "tech",
+  "timesBorrowed" : 0
+}, {
+  "number" : 62,
+  "title" : "Principles of Communication Systems",
+  "author" : "\"Taub",
+  "genre" : " Schilling\"",
+  "subGenre" : "tech",
+  "publisher" : "signal_processing",
+  "timesBorrowed" : 0
+}, {
+  "number" : 63,
+  "title" : "Let Us C",
+  "author" : "\"Kanetkar",
+  "genre" : " Yashwant\"",
+  "subGenre" : "tech",
+  "publisher" : "computer_science",
+  "timesBorrowed" : 0
+}, {
+  "number" : 64,
+  "title" : "\"Amulet of Samarkand",
+  "author" : " The\"",
+  "genre" : "\"Stroud",
+  "subGenre" : " Jonathan\"",
+  "publisher" : "fiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 65,
+  "title" : "Crime and Punishment",
+  "author" : "\"Dostoevsky",
+  "genre" : " Fyodor\"",
+  "subGenre" : "fiction",
+  "publisher" : "classic",
+  "timesBorrowed" : 0
+}, {
+  "number" : 66,
+  "title" : "Angels & Demons",
+  "author" : "\"Brown",
+  "genre" : " Dan\"",
+  "subGenre" : "fiction",
+  "publisher" : "novel",
+  "timesBorrowed" : 0
+}, {
+  "number" : 67,
+  "title" : "\"Argumentative Indian",
+  "author" : " The\"",
+  "genre" : "\"Sen",
+  "subGenre" : " Amartya\"",
+  "publisher" : "nonfiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 68,
+  "title" : "Sea of Poppies",
+  "author" : "\"Ghosh",
+  "genre" : " Amitav\"",
+  "subGenre" : "fiction",
+  "publisher" : "novel",
+  "timesBorrowed" : 0
+}, {
+  "number" : 69,
+  "title" : "\"Idea of Justice",
+  "author" : " The\"",
+  "genre" : "\"Sen",
+  "subGenre" : " Amartya\"",
+  "publisher" : "philosophy",
+  "timesBorrowed" : 0
+}, {
+  "number" : 70,
+  "title" : "\"Raisin in the Sun",
+  "author" : " A\"",
+  "genre" : "\"Hansberry",
+  "subGenre" : " Lorraine\"",
+  "publisher" : "fiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 71,
+  "title" : "All the President's Men",
+  "author" : "\"Woodward",
+  "genre" : " Bob\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "history",
+  "timesBorrowed" : 0
+}, {
+  "number" : 72,
+  "title" : "\"Prisoner of Birth",
+  "author" : " A\"",
+  "genre" : "\"Archer",
+  "subGenre" : " Jeffery\"",
+  "publisher" : "fiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 73,
+  "title" : "Scoop!",
+  "author" : "\"Nayar",
+  "genre" : " Kuldip\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "history",
+  "timesBorrowed" : 0
+}, {
+  "number" : 74,
+  "title" : "Ahe Manohar Tari",
+  "author" : "\"Deshpande",
+  "genre" : " Sunita\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "autobiography",
+  "timesBorrowed" : 0
+}, {
+  "number" : 75,
+  "title" : "\"Last Mughal",
+  "author" : " The\"",
+  "genre" : "\"Dalrymple",
+  "subGenre" : " William\"",
+  "publisher" : "nonfiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 76,
+  "title" : "\"Social Choice & Welfare",
+  "author" : " Vol 39 No. 1\"",
+  "genre" : "Various",
+  "subGenre" : "tech",
+  "publisher" : "economics",
+  "timesBorrowed" : 0
+}, {
+  "number" : 77,
+  "title" : "Radiowaril Bhashane & Shrutika",
+  "author" : "\"Deshpande",
+  "genre" : " P L\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "misc",
+  "timesBorrowed" : 0
+}, {
+  "number" : 78,
+  "title" : "Gun Gayin Awadi",
+  "author" : "\"Deshpande",
+  "genre" : " P L\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "misc",
+  "timesBorrowed" : 0
+}, {
+  "number" : 79,
+  "title" : "Aghal Paghal",
+  "author" : "\"Deshpande",
+  "genre" : " P L\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "misc",
+  "timesBorrowed" : 0
+}, {
+  "number" : 80,
+  "title" : "Maqta-e-Ghalib",
+  "author" : "\"Garg",
+  "genre" : " Sanjay\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "poetry",
+  "timesBorrowed" : 0
+}, {
+  "number" : 81,
+  "title" : "Beyond Degrees",
+  "author" : "",
+  "genre" : "philosophy",
+  "subGenre" : "education",
+  "publisher" : "HarperCollins",
+  "timesBorrowed" : 0
+}, {
+  "number" : 82,
+  "title" : "Manasa",
+  "author" : "\"Kale",
+  "genre" : " V P\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "misc",
+  "timesBorrowed" : 0
+}, {
+  "number" : 83,
+  "title" : "India from Midnight to Milennium",
+  "author" : "\"Tharoor",
+  "genre" : " Shashi\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "history",
+  "timesBorrowed" : 0
+}, {
+  "number" : 84,
+  "title" : "\"World's Greatest Trials",
+  "author" : " The\"",
+  "genre" : "\"John Doe\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "history",
+  "timesBorrowed" : 0
+}, {
+  "number" : 85,
+  "title" : "\"Great Indian Novel",
+  "author" : " The\"",
+  "genre" : "\"Tharoor",
+  "subGenre" : " Shashi\"",
+  "publisher" : "fiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 86,
+  "title" : "O Jerusalem!",
+  "author" : "\"Lapierre",
+  "genre" : " Dominique\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "history",
+  "timesBorrowed" : 0
+}, {
+  "number" : 87,
+  "title" : "\"City of Joy",
+  "author" : " The\"",
+  "genre" : "\"Lapierre",
+  "subGenre" : " Dominique\"",
+  "publisher" : "fiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 88,
+  "title" : "Freedom at Midnight",
+  "author" : "\"Lapierre",
+  "genre" : " Dominique\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "history",
+  "timesBorrowed" : 0
+}, {
+  "number" : 89,
+  "title" : "\"Winter of Our Discontent",
+  "author" : " The\"",
+  "genre" : "\"Steinbeck",
+  "subGenre" : " John\"",
+  "publisher" : "fiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 90,
+  "title" : "On Education",
+  "author" : "\"Russell",
+  "genre" : " Bertrand\"",
+  "subGenre" : "philosophy",
+  "publisher" : "education",
+  "timesBorrowed" : 0
+}, {
+  "number" : 91,
+  "title" : "Free Will",
+  "author" : "\"Harris",
+  "genre" : " Sam\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "psychology",
+  "timesBorrowed" : 0
+}, {
+  "number" : 92,
+  "title" : "Bookless in Baghdad",
+  "author" : "\"Tharoor",
+  "genre" : " Shashi\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "history",
+  "timesBorrowed" : 0
+}, {
+  "number" : 93,
+  "title" : "\"Case of the Lame Canary",
+  "author" : " The\"",
+  "genre" : "\"Gardner",
+  "subGenre" : " Earle Stanley\"",
+  "publisher" : "fiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 94,
+  "title" : "\"Theory of Everything",
+  "author" : " The\"",
+  "genre" : "\"Hawking",
+  "subGenre" : " Stephen\"",
+  "publisher" : "science",
+  "timesBorrowed" : 0
+}, {
+  "number" : 95,
+  "title" : "New Markets & Other Essays",
+  "author" : "\"Drucker",
+  "genre" : " Peter\"",
+  "subGenre" : "science",
+  "publisher" : "economics",
+  "timesBorrowed" : 0
+}, {
+  "number" : 96,
+  "title" : "Electric Universe",
+  "author" : "\"Bodanis",
+  "genre" : " David\"",
+  "subGenre" : "science",
+  "publisher" : "physics",
+  "timesBorrowed" : 0
+}, {
+  "number" : 97,
+  "title" : "\"Hunchback of Notre Dame",
+  "author" : " The\"",
+  "genre" : "\"Hugo",
+  "subGenre" : " Victor\"",
+  "publisher" : "fiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 98,
+  "title" : "Burning Bright",
+  "author" : "\"Steinbeck",
+  "genre" : " John\"",
+  "subGenre" : "fiction",
+  "publisher" : "classic",
+  "timesBorrowed" : 0
+}, {
+  "number" : 99,
+  "title" : "\"Age of Discontuinity",
+  "author" : " The\"",
+  "genre" : "\"Drucker",
+  "subGenre" : " Peter\"",
+  "publisher" : "nonfiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 100,
+  "title" : "Doctor in the Nude",
+  "author" : "\"Gordon",
+  "genre" : " Richard\"",
+  "subGenre" : "fiction",
+  "publisher" : "novel",
+  "timesBorrowed" : 0
+}, {
+  "number" : 101,
+  "title" : "Down and Out in Paris & London",
+  "author" : "\"Orwell",
+  "genre" : " George\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "autobiography",
+  "timesBorrowed" : 0
+}, {
+  "number" : 102,
+  "title" : "Identity & Violence",
+  "author" : "\"Sen",
+  "genre" : " Amartya\"",
+  "subGenre" : "philosophy",
+  "publisher" : "philosophy",
+  "timesBorrowed" : 0
+}, {
+  "number" : 103,
+  "title" : "Beyond the Three Seas",
+  "author" : "\"Dalrymple",
+  "genre" : " William\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "history",
+  "timesBorrowed" : 0
+}, {
+  "number" : 104,
+  "title" : "\"World's Greatest Short Stories",
+  "author" : " The\"",
+  "genre" : "",
+  "subGenre" : "fiction",
+  "publisher" : "classic",
+  "timesBorrowed" : 0
+}, {
+  "number" : 105,
+  "title" : "Talking Straight",
+  "author" : "\"Iacoca",
+  "genre" : " Lee\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "autobiography",
+  "timesBorrowed" : 0
+}, {
+  "number" : 106,
+  "title" : "\"Maugham's Collected Short Stories",
+  "author" : " Vol 3\"",
+  "genre" : "\"Maugham",
+  "subGenre" : " William S\"",
+  "publisher" : "fiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 107,
+  "title" : "\"Phantom of Manhattan",
+  "author" : " The\"",
+  "genre" : "\"Forsyth",
+  "subGenre" : " Frederick\"",
+  "publisher" : "fiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 108,
+  "title" : "Ashenden of The British Agent",
+  "author" : "\"Maugham",
+  "genre" : " William S\"",
+  "subGenre" : "fiction",
+  "publisher" : "classic",
+  "timesBorrowed" : 0
+}, {
+  "number" : 109,
+  "title" : "Zen & The Art of Motorcycle Maintenance",
+  "author" : "\"Pirsig",
+  "genre" : " Robert\"",
+  "subGenre" : "philosophy",
+  "publisher" : "autobiography",
+  "timesBorrowed" : 0
+}, {
+  "number" : 110,
+  "title" : "\"Great War for Civilization",
+  "author" : " The\"",
+  "genre" : "\"Fisk",
+  "subGenre" : " Robert\"",
+  "publisher" : "nonfiction",
+  "timesBorrowed" : 0
+}, {
+  "number" : 111,
+  "title" : "We the Living",
+  "author" : "\"Rand",
+  "genre" : " Ayn\"",
+  "subGenre" : "fiction",
+  "publisher" : "novel",
+  "timesBorrowed" : 0
+}, {
+  "number" : 112,
+  "title" : "\"Artist and the Mathematician",
+  "author" : " The\"",
+  "genre" : "\"Aczel",
+  "subGenre" : " Amir\"",
+  "publisher" : "science",
+  "timesBorrowed" : 0
+}, {
+  "number" : 113,
+  "title" : "History of Western Philosophy",
+  "author" : "\"Russell",
+  "genre" : " Bertrand\"",
+  "subGenre" : "philosophy",
+  "publisher" : "philosophy",
+  "timesBorrowed" : 0
+}, {
+  "number" : 114,
+  "title" : "Selected Short Stories",
+  "author" : "",
+  "genre" : "fiction",
+  "subGenre" : "classic",
+  "publisher" : "Jaico",
+  "timesBorrowed" : 0
+}, {
+  "number" : 115,
+  "title" : "Rationality & Freedom",
+  "author" : "\"Sen",
+  "genre" : " Amartya\"",
+  "subGenre" : "science",
+  "publisher" : "economics",
+  "timesBorrowed" : 0
+}, {
+  "number" : 116,
+  "title" : "Clash of Civilizations and Remaking of the World Order",
+  "author" : "\"Huntington",
+  "genre" : " Samuel\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "history",
+  "timesBorrowed" : 0
+}, {
+  "number" : 117,
+  "title" : "Uncommon Wisdom",
+  "author" : "\"Capra",
+  "genre" : " Fritjof\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "anthology",
+  "timesBorrowed" : 0
+}, {
+  "number" : 118,
+  "title" : "One",
+  "author" : "\"Bach",
+  "genre" : " Richard\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "autobiography",
+  "timesBorrowed" : 0
+}, {
+  "number" : 119,
+  "title" : "Karl Marx Biography",
+  "author" : "\"Marx",
+  "genre" : " Karl\"",
+  "subGenre" : "nonfiction",
+  "publisher" : "autobiography",
+  "timesBorrowed" : 0
+}, {
+  "number" : 120,
+  "title" : "To Sir With Love",
+  "author" : "Braithwaite",
+  "genre" : "fiction",
+  "subGenre" : "classic",
+  "publisher" : "Penguin",
+  "timesBorrowed" : 0
+} ]

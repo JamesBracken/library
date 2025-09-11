@@ -10,6 +10,16 @@ import java.util.*;
 
 public class Library {
     private final Path USER_FILE_PATH = Paths.get("data", "users.json");
+    private final Path BOOK_FILE_PATH = Paths.get("data", "books.json");
+    private final Path CSV_BOOK_FILE_PATH = Paths.get("data", "books_data.csv");
+
+    public Path getCSV_BOOK_FILE_PATH() {
+        return CSV_BOOK_FILE_PATH;
+    }
+
+    public Path getBOOK_FILE_PATH() {
+        return BOOK_FILE_PATH;
+    }
 
     public Path getUSER_FILE_PATH() {
         return USER_FILE_PATH;
@@ -73,11 +83,11 @@ public class Library {
 
 // Add properties of availableBooks, borrowedBooks < k, v > < user, Set<book>>, books FINISHED
 // Add method registerUser FINISHED
-// Find a way to make write users to a JSON file
+// Find a way to make write users to a JSON file FINISHED
 // Add method addBook
 // Add method FOR ADMINS generateBorrowedBooks
 // Find a way to generate a report of borrowed books
 // Maybe add method for loanBook and receiveBook/retrieveBook
 // Add method handleBookLoanRequest
 // Add method handleBookReturnRequest
-// Add persistence methods to load users/books here
+// Add persistence methods to load users/books here FINISHED

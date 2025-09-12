@@ -6,9 +6,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
-public class JsonReader {
+import static org.utils.JsonWriter.mapper;
 
-    private static final ObjectMapper mapper = JsonWriter.mapper;
+public class JsonReader {
 
     public static <T> T readFromJsonFile(Path filePath, Class<T> clazz) {
         try {

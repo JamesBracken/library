@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class JsonWriter {
-    static final ObjectMapper mapper = new ObjectMapper()
+    public static final ObjectMapper mapper = new ObjectMapper()
             .registerModule(new JavaTimeModule())
             .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
@@ -29,6 +29,7 @@ public class JsonWriter {
             File file = filePath.toFile();
             ObjectMapper mapper = JsonWriter.mapper;
 
+            @SuppressWarnings("unchecked")
             T[] existingData = file.exists() && file.length() > 0
                     ? mapper.readValue(file, clazz)
                     : (T[]) java.lang.reflect.Array.newInstance(clazz.getComponentType(), 0);

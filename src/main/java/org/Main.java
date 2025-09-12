@@ -48,6 +48,12 @@ public class Main {
         File bookFile = bookFilePath.toFile();
         if(bookFile.length() > 0) myLibrary.initializeIDCount(List.of(JsonReader.readFromJsonFile(bookFilePath, Book[].class)));
         System.out.println("Book.getIDCount: " + Book.getIDCount());
+
+        myLibrary.initializeLibraryBooksData();
+
+        System.out.println("getBooks: " + myLibrary.getBooks());
+        System.out.println("getAvailableBooks: " + myLibrary.getAvailableBooks());
+        System.out.println("getBorrowedBooks: " + myLibrary.getBorrowedBooks());
     }
 }
 
@@ -66,6 +72,7 @@ public class Main {
 // Add properties of availableBooks, borrowedBooks < k, v > < user, Set<book>>, books FINISHED
 // Add method registerUser FINISHED
 // Find a way to make write users to a JSON file FINISHED
+// Populate library books list using database
 // Add method addBook
 // Add method FOR ADMINS generateBorrowedBooks
 // Find a way to generate a report of borrowed books

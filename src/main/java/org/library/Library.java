@@ -2,11 +2,17 @@ package org.library;
 
 import org.book.Book;
 import org.user.User;
+import org.utils.JsonReader;
 import org.utils.JsonWriter;
 
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+
+import static org.utils.JsonWriter.mapper;
+
 
 public class Library {
     private final Path USER_FILE_PATH = Paths.get("data", "users.json");
@@ -35,6 +41,13 @@ public class Library {
     public Library() {
     }
 
+    public void setAvailableBooks(Set<Book> availableBooks) {
+        this.availableBooks = availableBooks;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
 
     public Set<Book> getBooks() {
         return books;
@@ -95,12 +108,33 @@ public class Library {
             System.out.println("The object: " + items + " is not currently being handled in initializeIDCount");
         }
     }
+
+    //Populate library books list using database
+    public void initializeLibraryBooksData() {
+        try {
+            File file = BOOK_FILE_PATH.toFile();
+            System.out.println(Arrays.toString(JsonReader.readFromJsonFile(BOOK_FILE_PATH, Book[].class)));
+//            Book[] existingBookData = file.exists() && file.length() > 0 ?
+            Book[] existingBookData = mapper.readValue(file, Book[].class);
+            System.out.println("existingBookData: " + Arrays.toString(existingBookData));
+            this.setAvailableBooks(new HashSet<> (Arrays.asList(existingBookData)));
+            this.setBooks(new HashSet<> (Arrays.asList(existingBookData)));
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to initialize library books data from: " + BOOK_FILE_PATH + " Exception: " + e);
+        }
+    }
+//    setAvailableBooks
+//    availableBooks
+    //Add book method
+
+
 }
 
 
 // Add properties of availableBooks, borrowedBooks < k, v > < user, Set<book>>, books FINISHED
 // Add method registerUser FINISHED
 // Find a way to make write users to a JSON file FINISHED
+// Populate library books list using database
 // Add method addBook
 // Add method FOR ADMINS generateBorrowedBooks
 // Find a way to generate a report of borrowed books

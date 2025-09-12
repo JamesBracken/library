@@ -11,6 +11,7 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 
 public class User {
+    private static long IDCount;
 
     private long userID;
     private String name;
@@ -20,8 +21,6 @@ public class User {
     public static void setIDCount(long IDCount) {
         User.IDCount = IDCount;
     }
-
-    private static long IDCount;
 
     public User() {
 

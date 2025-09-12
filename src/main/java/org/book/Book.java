@@ -1,16 +1,31 @@
 package org.book;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.time.LocalDate;
+
 public class Book {
-    private long number;
+    private long bookID;
     private String title;
     private String author;
     private String genre;
     private String subGenre;
     private String publisher;
     private long timesBorrowed;
+    private static long IDCount;
 
-    public Book(long number, String title, String author, String genre, String subGenre, String publisher, long timesBorrowed) {
-        this.number = number;
+    @JsonCreator
+    public Book(
+            @JsonProperty("bookID") Long bookID,
+            @JsonProperty("title") String title,
+            @JsonProperty("author") String author,
+            @JsonProperty("genre") String genre,
+            @JsonProperty("subGenre") String subGenre,
+            @JsonProperty("publisher") String publisher,
+            @JsonProperty("timesBorrowed") long timesBorrowed
+    ) {
+        this.bookID = bookID;
         this.title = title;
         this.author = author;
         this.genre = genre;
@@ -19,12 +34,32 @@ public class Book {
         this.timesBorrowed = timesBorrowed;
     }
 
+    public Book(long bookID, String title, String author, String genre, String subGenre, String publisher, long timesBorrowed) {
+        this.bookID = bookID;
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+        this.subGenre = subGenre;
+        this.publisher = publisher;
+        this.timesBorrowed = timesBorrowed;
+
+        IDCount++;
+    }
+
+    public static void setIDCount(long IDCount) {
+        Book.IDCount = IDCount;
+    }
+
+    public static long getIDCount() {
+        return IDCount;
+    }
+
     public void setTimesBorrowed(int timesBorrowed) {
         this.timesBorrowed = timesBorrowed;
     }
 
-    public long getNumber() {
-        return number;
+    public long getBookID() {
+        return bookID;
     }
 
     public String getTitle() {
@@ -54,7 +89,7 @@ public class Book {
     @Override
     public String toString() {
         return "Book{" +
-                "number=" + number +
+                "number=" + bookID +
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", genre='" + genre + '\'' +

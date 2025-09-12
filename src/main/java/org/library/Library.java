@@ -74,9 +74,26 @@ public class Library {
                 '}';
     }
 
-    public void initializeIDCount(List<User> users) {
-        long maxID = users.stream().mapToLong(User::getUserID).max().orElse(-1);
-        User.setIDCount(maxID + 1);
+    public <T> void initializeIDCount(List<T> items) {
+        if (items.isEmpty()) return;
+
+        Object firstItem = items.getFirst();
+
+        if (firstItem instanceof User) {
+            @SuppressWarnings("unchecked")
+            List<User> users = (List<User>) items;
+
+            long maxID = users.stream().mapToLong(User::getUserID).max().orElse(-1);
+            User.setIDCount(maxID + 1);
+        } else if (firstItem instanceof Book) {
+            @SuppressWarnings("unchecked")
+            List<Book> books = (List<Book>) items;
+
+            long maxID = books.stream().mapToLong(Book::getBookID).max().orElse(-1);
+            Book.setIDCount(maxID + 1);
+        } else {
+            System.out.println("The object: " + items + " is not currently being handled in initializeIDCount");
+        }
     }
 }
 

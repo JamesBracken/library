@@ -1,5 +1,6 @@
 package org;
 
+import org.book.Book;
 import org.library.Library;
 import org.user.User;
 import org.utils.CsvToJsonConverter;
@@ -17,9 +18,9 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         Library myLibrary = new Library();
-        Path filePath = myLibrary.getUSER_FILE_PATH();
-        File file = filePath.toFile();
-        if(file.length() > 0) myLibrary.initializeIDCount(List.of(JsonReader.readFromJsonFile(myLibrary.getUSER_FILE_PATH(), User[].class)));
+        Path userFilePath = myLibrary.getUSER_FILE_PATH();
+        File userFile = userFilePath.toFile();
+        if(userFile.length() > 0) myLibrary.initializeIDCount(List.of(JsonReader.readFromJsonFile(userFilePath, User[].class)));
 
         //INPUTTING USERS TO JSON
 
@@ -41,8 +42,12 @@ public class Main {
 
         //TRANSLATING BOOKS CSV TO JSON BOOKS
 
-        System.out.println("CsvToJsonConverter TEST");
-        CsvToJsonConverter.convertCsvToJson(myLibrary.getCSV_BOOK_FILE_PATH(), myLibrary.getBOOK_FILE_PATH());
+//        System.out.println("CsvToJsonConverter TEST");
+//        CsvToJsonConverter.convertCsvToJson(myLibrary.getCSV_BOOK_FILE_PATH(), myLibrary.getBOOK_FILE_PATH());
+        Path bookFilePath = myLibrary.getBOOK_FILE_PATH();
+        File bookFile = bookFilePath.toFile();
+        if(bookFile.length() > 0) myLibrary.initializeIDCount(List.of(JsonReader.readFromJsonFile(bookFilePath, Book[].class)));
+        System.out.println("Book.getIDCount: " + Book.getIDCount());
     }
 }
 

@@ -54,11 +54,6 @@ public class Library {
         return borrowedBooks;
     }
 
-    public void handleBookLoanRequest(Book book, long userID) {
-        // Fill up later
-        System.out.println("handleBookLoanRequest UNFINISHED, POPULATE CODE");
-    }
-
     public Path getCSV_BOOK_FILE_PATH() {
         return CSV_BOOK_FILE_PATH;
     }
@@ -150,9 +145,27 @@ public class Library {
         this.initializeIDCount(List.of(JsonReader.readFromJsonFile(BOOK_FILE_PATH, Book[].class)));
     }
 
+    public void handleBookLoanRequest(long bookID, long userID) {
+        Book book = getAvailableBooks().stream().filter(item -> item.getBookID() == bookID).findFirst().orElse(null);
+        User user = getUserByID(userID);
+        if (user == null) throw new IllegalArgumentException("The user with ID: " + userID + " cannot be found");
+        if (book == null) throw new IllegalArgumentException("The book with ID: " + bookID + " cannot be found");
+        Set<Book> bookSet = new HashSet<>();
+        bookSet.add(book);
+        getBorrowedBooks().put(user, bookSet);
+        getAvailableBooks().remove(book);
+        updateBookTimesBorrowed(book);
+    }
 
+    public User getUserByID(long ID) {
+        return getUsers().stream().filter(user -> user.getUserID() == ID).findFirst().orElse(null);
+    }
+
+    public void updateBookTimesBorrowed(Book book) {
+        book.setTimesBorrowed(book.getTimesBorrowed() + 1);
+        JsonWriter.updateInJsonFile(book, getBOOK_FILE_PATH(), Book[].class, Book::getBookID);
+    }
 }
-
 
 // Add properties of availableBooks, borrowedBooks < k, v > < user, Set<book>>, books FINISHED
 // Add method registerUser FINISHED

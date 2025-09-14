@@ -68,10 +68,6 @@ public class User {
         return dateOfBirth;
     }
 
-//    public void getUsers(Book book, Library library) {
-//        library.handleBookLoanRequest(book, userID);
-//    }
-
     @Override
     public String toString() {
         return "User{" +

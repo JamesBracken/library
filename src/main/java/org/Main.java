@@ -5,12 +5,10 @@ import org.library.Library;
 import org.user.User;
 import org.utils.CsvToJsonConverter;
 import org.utils.JsonReader;
+import org.utils.JsonWriter;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -28,43 +26,35 @@ public class Main {
         File bookFile = bookFilePath.toFile();
 
         // INITIALIZE ID COUNTS, MAY NEEDTO INCORPORATE THIS INTO addNewBook AND registerUser
-        if(bookFile.length() > 0) myLibrary.initializeIDCount(List.of(JsonReader.readFromJsonFile(bookFilePath, Book[].class)));
-        if(userFile.length() > 0) myLibrary.initializeIDCount(List.of(JsonReader.readFromJsonFile(userFilePath, User[].class)));
+        if (bookFile.length() > 0)
+            myLibrary.initializeIDCount(List.of(JsonReader.readFromJsonFile(bookFilePath, Book[].class)));
+        if (userFile.length() > 0)
+            myLibrary.initializeIDCount(List.of(JsonReader.readFromJsonFile(userFilePath, User[].class)));
 
 //        User james = new User("James", true, LocalDate.parse("1982-07-03"));
 //        myLibrary.registerUser(james);
-        User christopher = new User("Christopher", true, LocalDate.parse("1982-07-03"));
-        myLibrary.registerUser(christopher);
+//        User christopher = new User("Christopher", true, LocalDate.parse("1982-07-03"));
+//        myLibrary.registerUser(christopher);
 
-
+        //INPUTTING USERS TO JSON
 
         myLibrary.initializeLibraryBooksData();
         myLibrary.initializeLibraryUsersData();
         Set<User> testUserSet = myLibrary.getUsers();
+        User testUser = testUserSet.stream().filter(user -> user.getUserID() == 1).findFirst().orElse(testUserSet.stream().findFirst().get());
 
 //        --------------------------------------------------
-
-        //INPUTTING USERS TO JSON
-
-        //if(file.length() > 0) myLibrary.initializeIDCount(List.of(JsonReader.readFromJsonFile(myLibrary.getBOOK_FILE_PATH(), User[].class)));
-//
-//
-
         //TRANSLATING BOOKS CSV TO JSON BOOKS
 
-//        System.out.println("CsvToJsonConverter TEST");
-//        CsvToJsonConverter.convertCsvToJson(myLibrary.getCSV_BOOK_FILE_PATH(), myLibrary.getBOOK_FILE_PATH());
-        System.out.println("Book.getIDCount: " + Book.getIDCount());
+//        System.out.println("Book.getIDCount: " + Book.getIDCount());
 //        Book sampleBook = new Book(Book.getIDCount() ,"Robinson Crusoe", "Daniel Defoe", "adventure", "fiction", "Penguin Books", 0);
 //        myLibrary.addNewBook(sampleBook);
-
-        System.out.println("getBooks: " + myLibrary.getBooks());
-        System.out.println("getAvailableBooks: " + myLibrary.getAvailableBooks());
-        System.out.println("getBorrowedBooks: " + myLibrary.getBorrowedBooks());
+//        System.out.println("getAvailableBooks: " + myLibrary.getAvailableBooks());
+//        System.out.println("getBorrowedBooks: " + myLibrary.getBorrowedBooks());
 
         //TESTING BOOK LOAN BY USER
-
-        System.out.println("testUserSet: " + testUserSet);
+        testUser.borrowBook(myLibrary, 4);
+        System.out.println("getBorrowedBooks: " + myLibrary.getBorrowedBooks());
 
     }
 }
@@ -87,20 +77,39 @@ public class Main {
 // Populate library books list using database FINISHED
 // Add method addBook FINISHED
 // Populate library users list using database FINISHED
-// Maybe add method for loanBook and receiveBook/retrieveBook
-// Add method handleBookLoanRequest
+// Add method handleBookLoanRequest FINISHED
 // Add method handleBookReturnRequest
 // Add persistence methods to load users/books here FINISHED
 // Find a way to generate a report of borrowed books
 // Add method FOR ADMINS generateBorrowedBooks
 
 //USER
-// Add properties of userId, name, isAdmin, dateOfBirth
-// Add method borrowBook
+// Add properties of userId, name, isAdmin, dateOfBirth FINISHED
+// Add method borrowBook FINISHED
 // Add method returnBook
+
+//LIBRARY SERVICE // menu type -- options
+//Landing menu - Login, Register
+//Main menu - Display library books, Display available books, Borrow a book
+//ADMIN Main menu - Display library books, Display available books, Borrow a book, Run report
+//
+//
+//
+//
+//
+//
+//
+//Login
+//Register
+//Display library books
+//Display available library books
+//Borrow a book
+//Run report -- preferably in CSV
+
 
 //POSSIBLE BUGS, TESTING, CHECKS, FIXES NEEDED
 // Test if database can hold duplicate books (Specifically id)
+// Ensure library data is re-initialised when database is updated
 
 
 //OPTIONAL EXTENSIONS

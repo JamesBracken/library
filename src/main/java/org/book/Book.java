@@ -54,7 +54,7 @@ public class Book {
         return IDCount;
     }
 
-    public void setTimesBorrowed(int timesBorrowed) {
+    public void setTimesBorrowed(long timesBorrowed) {
         this.timesBorrowed = timesBorrowed;
     }
 

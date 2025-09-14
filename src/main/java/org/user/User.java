@@ -83,6 +83,9 @@ public class User {
         library.handleBookLoanRequest(bookID, this.userID);
     }
 
+    public void returnBook(Library library, long bookID) {
+        library.handleBookReturnRequest(bookID, this.userID);
+    }
 }
 
 // Add properties of userId, name, isAdmin, dateOfBirth FINISHED

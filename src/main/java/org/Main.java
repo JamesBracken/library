@@ -56,7 +56,8 @@ public class Main {
         testUser.borrowBook(myLibrary, 4);
         testUser.borrowBook(myLibrary, 3);
         System.out.println("getBorrowedBooks: " + myLibrary.getBorrowedBooks());
-
+        testUser.returnBook(myLibrary, 3);
+        System.out.println("getBorrowedBooks: " + myLibrary.getBorrowedBooks());
     }
 }
 

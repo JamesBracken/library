@@ -150,14 +150,28 @@ public class Library {
         User user = getUserByID(userID);
         if (user == null) throw new IllegalArgumentException("The user with ID: " + userID + " cannot be found");
         if (book == null) throw new IllegalArgumentException("The book with ID: " + bookID + " cannot be found");
-        Set<Book> bookSet = getBorrowedBooks().get(user);
-        if(bookSet == null) {
-        bookSet = new HashSet<>();
-        }
-        bookSet.add(book);
-        getBorrowedBooks().put(user, bookSet);
+        Set<Book> userBorrowedBookSet = getBorrowedBooks().get(user);
+        if (userBorrowedBookSet == null) userBorrowedBookSet = new HashSet<>();
+        userBorrowedBookSet.add(book);
+        getBorrowedBooks().put(user, userBorrowedBookSet);
         getAvailableBooks().remove(book);
         updateBookTimesBorrowed(book);
+    }
+
+    public void handleBookReturnRequest(long bookID, long userID) {
+        try {
+            User user = getUserByID(userID);
+            if (user == null) throw new IllegalArgumentException("The user with ID: " + userID + " cannot be found");
+            Set<Book> userBorrowedBookSet = getBorrowedBooks().get(user);
+            if (userBorrowedBookSet == null) throw new RuntimeException("You may not attempt to return a book if you have not borrowed any books");
+            Book book = userBorrowedBookSet.stream().filter(currentBook -> currentBook.getBookID() == bookID).findFirst().orElse(null);
+            if (book == null) throw new IllegalArgumentException("The book with ID: " + bookID + " cannot be found");
+
+            getAvailableBooks().add(book);
+            userBorrowedBookSet.remove(book);
+        } catch (NullPointerException e) {
+            throw new RuntimeException("You may not return the book with ID: " + bookID + " as you did not borrow this");
+        }
     }
 
     public User getUserByID(long ID) {
@@ -179,7 +193,7 @@ public class Library {
 // Populate library users list using database FINISHED
 // Add persistence methods to load users/books here FINISHED
 // Add method handleBookLoanRequest FINISHED
-// Add method handleBookReturnRequest
+// Add method handleBookReturnRequest FINISHED
 // Find a way to generate a report of borrowed books
 // Add method FOR ADMINS generateBorrowedBooks
 

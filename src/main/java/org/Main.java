@@ -54,6 +54,7 @@ public class Main {
 
         //TESTING BOOK LOAN BY USER
         testUser.borrowBook(myLibrary, 4);
+        testUser.borrowBook(myLibrary, 3);
         System.out.println("getBorrowedBooks: " + myLibrary.getBorrowedBooks());
 
     }

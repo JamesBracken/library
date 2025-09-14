@@ -150,7 +150,10 @@ public class Library {
         User user = getUserByID(userID);
         if (user == null) throw new IllegalArgumentException("The user with ID: " + userID + " cannot be found");
         if (book == null) throw new IllegalArgumentException("The book with ID: " + bookID + " cannot be found");
-        Set<Book> bookSet = new HashSet<>();
+        Set<Book> bookSet = getBorrowedBooks().get(user);
+        if(bookSet == null) {
+        bookSet = new HashSet<>();
+        }
         bookSet.add(book);
         getBorrowedBooks().put(user, bookSet);
         getAvailableBooks().remove(book);
@@ -165,6 +168,7 @@ public class Library {
         book.setTimesBorrowed(book.getTimesBorrowed() + 1);
         JsonWriter.updateInJsonFile(book, getBOOK_FILE_PATH(), Book[].class, Book::getBookID);
     }
+
 }
 
 // Add properties of availableBooks, borrowedBooks < k, v > < user, Set<book>>, books FINISHED
@@ -173,11 +177,10 @@ public class Library {
 // Populate library books list using database FINISHED
 // Add method addBook FINISHED
 // Populate library users list using database FINISHED
-// Add method FOR ADMINS generateBorrowedBooks
-// Find a way to generate a report of borrowed books
-// Maybe add method for loanBook and receiveBook/retrieveBook NO LONGER NECESSARY
-// Add method handleBookLoanRequest
-// Add method handleBookReturnRequest
 // Add persistence methods to load users/books here FINISHED
+// Add method handleBookLoanRequest FINISHED
+// Add method handleBookReturnRequest
+// Find a way to generate a report of borrowed books
+// Add method FOR ADMINS generateBorrowedBooks
 
 

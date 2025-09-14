@@ -8,39 +8,4 @@
   "name" : "Christopher",
   "admin" : true,
   "dateOfBirth" : "1982-07-03"
-}, {
-  "userID" : 2,
-  "name" : "James",
-  "admin" : true,
-  "dateOfBirth" : "1982-07-03"
-}, {
-  "userID" : 3,
-  "name" : "Christopher",
-  "admin" : true,
-  "dateOfBirth" : "1982-07-03"
-}, {
-  "userID" : 4,
-  "name" : "James",
-  "admin" : true,
-  "dateOfBirth" : "1982-07-03"
-}, {
-  "userID" : 5,
-  "name" : "Christopher",
-  "admin" : true,
-  "dateOfBirth" : "1982-07-03"
-}, {
-  "userID" : 6,
-  "name" : "James",
-  "admin" : true,
-  "dateOfBirth" : "1982-07-03"
-}, {
-  "userID" : 7,
-  "name" : "James",
-  "admin" : true,
-  "dateOfBirth" : "1982-07-03"
-}, {
-  "userID" : 8,
-  "name" : "Christopher",
-  "admin" : true,
-  "dateOfBirth" : "1982-07-03"
 } ]

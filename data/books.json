@@ -958,4 +958,52 @@
   "subGenre" : "classic",
   "publisher" : "Penguin",
   "timesBorrowed" : 0
+}, {
+  "bookID" : 121,
+  "title" : "Robinson Crusoe",
+  "author" : "Daniel Defoe",
+  "genre" : "adventure",
+  "subGenre" : "fiction",
+  "publisher" : "Penguin Books",
+  "timesBorrowed" : 0
+}, {
+  "bookID" : 122,
+  "title" : "Robinson Crusoe",
+  "author" : "Daniel Defoe",
+  "genre" : "adventure",
+  "subGenre" : "fiction",
+  "publisher" : "Penguin Books",
+  "timesBorrowed" : 0
+}, {
+  "bookID" : 123,
+  "title" : "Robinson Crusoe",
+  "author" : "Daniel Defoe",
+  "genre" : "adventure",
+  "subGenre" : "fiction",
+  "publisher" : "Penguin Books",
+  "timesBorrowed" : 0
+}, {
+  "bookID" : 124,
+  "title" : "Robinson Crusoe",
+  "author" : "Daniel Defoe",
+  "genre" : "adventure",
+  "subGenre" : "fiction",
+  "publisher" : "Penguin Books",
+  "timesBorrowed" : 0
+}, {
+  "bookID" : 125,
+  "title" : "Robinson Crusoe",
+  "author" : "Daniel Defoe",
+  "genre" : "adventure",
+  "subGenre" : "fiction",
+  "publisher" : "Penguin Books",
+  "timesBorrowed" : 0
+}, {
+  "bookID" : 126,
+  "title" : "Robinson Crusoe",
+  "author" : "Daniel Defoe",
+  "genre" : "adventure",
+  "subGenre" : "fiction",
+  "publisher" : "Penguin Books",
+  "timesBorrowed" : 0
 } ]

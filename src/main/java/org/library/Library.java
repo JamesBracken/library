@@ -19,24 +19,13 @@ public class Library {
     private final Path BOOK_FILE_PATH = Paths.get("data", "books.json");
     private final Path CSV_BOOK_FILE_PATH = Paths.get("data", "books_data.csv");
 
-    public Path getCSV_BOOK_FILE_PATH() {
-        return CSV_BOOK_FILE_PATH;
-    }
-
-    public Path getBOOK_FILE_PATH() {
-        return BOOK_FILE_PATH;
-    }
-
-    public Path getUSER_FILE_PATH() {
-        return USER_FILE_PATH;
-    }
 
     private Set<Book> books = new HashSet<>();
     private Set<Book> availableBooks = new HashSet<>();
     private Map<User, Set<Book>> borrowedBooks = new HashMap<>();
     private Set<User> users = new HashSet<>();
 
-    //May not need this or might have to change it
+//May not need this or might have to change it
 
     public Library() {
     }
@@ -47,6 +36,10 @@ public class Library {
 
     public void setBooks(Set<Book> books) {
         this.books = books;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
     public Set<Book> getBooks() {
@@ -66,8 +59,20 @@ public class Library {
         System.out.println("handleBookLoanRequest UNFINISHED, POPULATE CODE");
     }
 
+    public Path getCSV_BOOK_FILE_PATH() {
+        return CSV_BOOK_FILE_PATH;
+    }
+
+    public Path getBOOK_FILE_PATH() {
+        return BOOK_FILE_PATH;
+    }
+
+    public Path getUSER_FILE_PATH() {
+        return USER_FILE_PATH;
+    }
+
     public Set<User> getUsers() {
-        return users;
+        return this.users;
     }
 
     public void registerUser(User user) {
@@ -114,18 +119,36 @@ public class Library {
         try {
             File file = BOOK_FILE_PATH.toFile();
             System.out.println(Arrays.toString(JsonReader.readFromJsonFile(BOOK_FILE_PATH, Book[].class)));
-//            Book[] existingBookData = file.exists() && file.length() > 0 ?
             Book[] existingBookData = mapper.readValue(file, Book[].class);
             System.out.println("existingBookData: " + Arrays.toString(existingBookData));
-            this.setAvailableBooks(new HashSet<> (Arrays.asList(existingBookData)));
-            this.setBooks(new HashSet<> (Arrays.asList(existingBookData)));
+            this.setAvailableBooks(new HashSet<>(Arrays.asList(existingBookData)));
+            this.setBooks(new HashSet<>(Arrays.asList(existingBookData)));
         } catch (IOException e) {
             throw new RuntimeException("Failed to initialize library books data from: " + BOOK_FILE_PATH + " Exception: " + e);
         }
     }
-//    setAvailableBooks
-//    availableBooks
+
+    //Populate library users list using database
+    public void initializeLibraryUsersData() {
+        try {
+            File file = USER_FILE_PATH.toFile();
+            System.out.println(Arrays.toString(JsonReader.readFromJsonFile(USER_FILE_PATH, User[].class)));
+            User[] existingUserData = mapper.readValue(file, User[].class);
+            System.out.println("existingBookData: " + Arrays.toString(existingUserData));
+            this.setUsers(new HashSet<>(Arrays.asList(existingUserData)));
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to initialize library users data from: " + USER_FILE_PATH + " Exception: " + e);
+        }
+    }
+
     //Add book method
+    public void addNewBook(Book book) {
+        books.add(book);
+        availableBooks.add(book);
+        JsonWriter.appendToJsonFile(book, BOOK_FILE_PATH, Book[].class);
+        //Adjust the IDCount for book
+        this.initializeIDCount(List.of(JsonReader.readFromJsonFile(BOOK_FILE_PATH, Book[].class)));
+    }
 
 
 }
@@ -134,11 +157,14 @@ public class Library {
 // Add properties of availableBooks, borrowedBooks < k, v > < user, Set<book>>, books FINISHED
 // Add method registerUser FINISHED
 // Find a way to make write users to a JSON file FINISHED
-// Populate library books list using database
-// Add method addBook
+// Populate library books list using database FINISHED
+// Add method addBook FINISHED
+// Populate library users list using database FINISHED
 // Add method FOR ADMINS generateBorrowedBooks
 // Find a way to generate a report of borrowed books
-// Maybe add method for loanBook and receiveBook/retrieveBook
+// Maybe add method for loanBook and receiveBook/retrieveBook NO LONGER NECESSARY
 // Add method handleBookLoanRequest
 // Add method handleBookReturnRequest
 // Add persistence methods to load users/books here FINISHED
+
+

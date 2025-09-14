@@ -68,9 +68,9 @@ public class User {
         return dateOfBirth;
     }
 
-    public void borrowBook(Book book, Library library) {
-        library.handleBookLoanRequest(book, userID);
-    }
+//    public void getUsers(Book book, Library library) {
+//        library.handleBookLoanRequest(book, userID);
+//    }
 
     @Override
     public String toString() {
@@ -82,6 +82,11 @@ public class User {
                 ", IDCount=" + IDCount +
                 '}';
     }
+
+    public void borrowBook(Library library,long bookID) {
+        library.handleBookLoanRequest(bookID, this.userID);
+    }
+
 }
 
 // Add properties of userId, name, isAdmin, dateOfBirth FINISHED

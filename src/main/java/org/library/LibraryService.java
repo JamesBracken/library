@@ -41,6 +41,32 @@ public class LibraryService {
         }
     }
 
+    public void promptUserLogin() {
+        System.out.println("Kindly enter your user ID to proceed");
+        handleUserLogin();
+    }
+
+    public void handleUserLogin() {
+        boolean isHandlerActive = true;
+        boolean isValidID = false;
+        while (isHandlerActive) {
+            String userInputID = scanner.nextLine().trim();
+            try {
+                isValidID = library.getUsers().stream().anyMatch(user -> user.getUserID() == Integer.parseInt(userInputID));
+            } catch (NumberFormatException e) {
+                System.out.println();
+            } finally {
+                System.out.println("isValidID: " + isValidID);
+                if (isValidID) {
+                    isHandlerActive = true;
+                    System.out.println("Valid id input");
+                    System.out.println("Must add display next menu");
+                    // DISPLAY NEXT MENU
+                }
+            }
+        }
+    }
+
 
 }
 

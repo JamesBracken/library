@@ -1,6 +1,10 @@
 package org.library;
 
+import org.user.User;
+
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class LibraryService {
@@ -76,15 +80,33 @@ public class LibraryService {
         boolean isHandlerActive = true;
         boolean isValidID = false;
         long userID;
-        boolean isAdminInput = promptUserIsAdmin();
         String nameInput = promptUserForName();
-        LocalDate dateOfBirthInput;
+        LocalDate dateOfBirthInput = promptUserDateOfBirth();
+        boolean isAdminInput = promptUserIsAdmin();
+        User newUser = new User(nameInput, isAdminInput, dateOfBirthInput);
+        System.out.printf("""
+                You have successfully registered for a library account.
+                Your user ID is: %d%n\s
+                You will now be returned to the main menu\s
+                """, newUser.getUserID());
+        library.registerUser(newUser);
+        displayStartMenu();
+    }
+    // May add extra checks at the end to prompt user if all information is correct and if they want to restart
+    public LocalDate promptUserDateOfBirth() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-//        while (isHandlerActive) {
-//            String userInputID = scanner.nextLine().trim();
-//            try {
-//            }
-//        }
+        while (true) {
+            System.out.println("Please input your date of birth in the format of dd/mm/yyyy ");
+            String userInputDateOfBirth = scanner.nextLine().trim();
+            try {
+                LocalDate dateOfBirth = LocalDate.parse(userInputDateOfBirth, formatter);
+                System.out.println("You have successfully input your date of birth");
+                return dateOfBirth;
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid date format. Please try again");
+            }
+        }
     }
 
     // Can improve security by adding a limit on password attempts, maybe exit application after

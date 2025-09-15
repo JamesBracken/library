@@ -39,10 +39,10 @@ public class Main {
 
         //INPUTTING USERS TO JSON
 
-        myLibrary.initializeLibraryBooksData();
-        myLibrary.initializeLibraryUsersData();
-        Set<User> testUserSet = myLibrary.getUsers();
-        User testUser = testUserSet.stream().filter(user -> user.getUserID() == 1).findFirst().orElse(testUserSet.stream().findFirst().get());
+//        myLibrary.initializeLibraryBooksData();
+//        myLibrary.initializeLibraryUsersData();
+//        Set<User> testUserSet = myLibrary.getUsers();
+//        User testUser = testUserSet.stream().filter(user -> user.getUserID() == 1).findFirst().orElse(testUserSet.stream().findFirst().get());
 
 //        --------------------------------------------------
         //TRANSLATING BOOKS CSV TO JSON BOOKS
@@ -54,10 +54,10 @@ public class Main {
 //        System.out.println("getBorrowedBooks: " + myLibrary.getBorrowedBooks());
 
         //TESTING BOOK LOAN BY USER
-        testUser.borrowBook(myLibrary, 4);
-        testUser.borrowBook(myLibrary, 3);
+//        testUser.borrowBook(myLibrary, 4);
+//        testUser.borrowBook(myLibrary, 3);
 //        System.out.println("getBorrowedBooks: " + myLibrary.getBorrowedBooks());
-        testUser.returnBook(myLibrary, 3);
+//        testUser.returnBook(myLibrary, 3);
 //        System.out.println("getBorrowedBooks: " + myLibrary.getBorrowedBooks());
 
 

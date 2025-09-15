@@ -113,9 +113,7 @@ public class Library {
     public void initializeLibraryBooksData() {
         try {
             File file = BOOK_FILE_PATH.toFile();
-            System.out.println(Arrays.toString(JsonReader.readFromJsonFile(BOOK_FILE_PATH, Book[].class)));
             Book[] existingBookData = mapper.readValue(file, Book[].class);
-            System.out.println("existingBookData: " + Arrays.toString(existingBookData));
             this.setAvailableBooks(new HashSet<>(Arrays.asList(existingBookData)));
             this.setBooks(new HashSet<>(Arrays.asList(existingBookData)));
         } catch (IOException e) {
@@ -127,9 +125,7 @@ public class Library {
     public void initializeLibraryUsersData() {
         try {
             File file = USER_FILE_PATH.toFile();
-            System.out.println(Arrays.toString(JsonReader.readFromJsonFile(USER_FILE_PATH, User[].class)));
             User[] existingUserData = mapper.readValue(file, User[].class);
-            System.out.println("existingBookData: " + Arrays.toString(existingUserData));
             this.setUsers(new HashSet<>(Arrays.asList(existingUserData)));
         } catch (IOException e) {
             throw new RuntimeException("Failed to initialize library users data from: " + USER_FILE_PATH + " Exception: " + e);

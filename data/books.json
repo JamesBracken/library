@@ -21,7 +21,7 @@
   "genre" : " Stephen\"",
   "subGenre" : "tech",
   "publisher" : "mathematics",
-  "timesBorrowed" : 25
+  "timesBorrowed" : 41
 }, {
   "bookID" : 4,
   "title" : "Superfreakonomics",
@@ -29,7 +29,7 @@
   "genre" : " Stephen\"",
   "subGenre" : "science",
   "publisher" : "economics",
-  "timesBorrowed" : 30
+  "timesBorrowed" : 46
 }, {
   "bookID" : 5,
   "title" : "Orientalism",

@@ -67,6 +67,87 @@ public class LibraryService {
         }
     }
 
+    public void displayRegistration() {
+        System.out.println("To register with us kindly read through the displayed instructions and input your information");
+        handleRegistration();
+    }
+
+    public void handleRegistration() {
+        boolean isHandlerActive = true;
+        boolean isValidID = false;
+        long userID;
+        boolean isAdminInput = promptUserIsAdmin();
+        String nameInput = promptUserForName();
+        LocalDate dateOfBirthInput;
+
+//        while (isHandlerActive) {
+//            String userInputID = scanner.nextLine().trim();
+//            try {
+//            }
+//        }
+    }
+
+    // Can improve security by adding a limit on password attempts, maybe exit application after
+    public boolean promptUserIsAdmin() {
+        System.out.println("Should this user be set up with admin rights? y/n");
+        while (true) {
+            String shouldUserBeAdmin = scanner.nextLine().trim().toLowerCase();
+            if (shouldUserBeAdmin.equals("y")) {
+                String masterPassword = "12345"; // Temporarily placing here, to be moved to ENVIRONMENTAL VARIABLES file
+                while (true) {
+                    System.out.println("To register this user as an admin kindly input the library master password: ");
+                    String userInputMasterPassword = scanner.nextLine().trim().toLowerCase();
+                    if (!userInputMasterPassword.equals(masterPassword)) {
+                        System.out.println("Incorrect master password");
+                        while (true) {
+                            System.out.println("Would you like to re-attempt to input the password? Please input 'y' or 'n'");
+                            String userInputShouldContinue = scanner.nextLine().trim().toLowerCase();
+                            if (userInputShouldContinue.equals("y")) {
+
+                                break;
+                            } else if (userInputShouldContinue.equals("n")) {
+                                return false;
+                            } else {
+                                System.out.println("That is not a valid option, please input 'y' or 'n' ");
+                            }
+                        }
+                        continue;
+                    }
+                    System.out.println("Master password successfully input");
+                    return true;
+                }
+            } else if (shouldUserBeAdmin.equals("n")) {
+                return false;
+            } else {
+                System.out.println("You must either input the letter 'y' or 'n'");
+            }
+        }
+    }
+
+    public String promptUserForName() {
+        System.out.println("Please input your name");
+        String userInputName;
+        while (true) {
+            try {
+                userInputName = scanner.nextLine().trim();
+                if (!userInputName.matches("^[\\p{L}\\-']+$")) {
+                    System.out.println("Please input a valid name with only alphabetical characters");
+                    continue;
+                }
+                return userInputName;
+            } catch (RuntimeException e) {
+                System.out.println("Invalid name input. Exception: " + e);
+            }
+        }
+    }
+
+    public void displayExitApplication() {
+
+    }
+
+    public void handleExitApplication() {
+
+    }
 
 }
 

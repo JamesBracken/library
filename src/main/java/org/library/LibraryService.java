@@ -194,6 +194,7 @@ public class LibraryService {
         handleLoggedInUserMenuOptions();
     }
 
+    //ADMIN Main menu - Display library books, Display available books, Borrow a book, Run report
     public void handleLoggedInUserMenuOptions() {
         String userInput;
         if (!loggedInUser.isAdmin()) {
@@ -201,7 +202,7 @@ public class LibraryService {
                 userInput = scanner.nextLine().trim();
                 switch (userInput) {
                     case "1" -> displayAllLibraryBooks();
-//                    case "2" -> ;
+                    case "2" -> displayAvailableLibraryBooks();
 //                    case "3" -> ;
                 }
             }
@@ -210,12 +211,24 @@ public class LibraryService {
                 userInput = scanner.nextLine().trim();
                 switch (userInput) {
                     case "1" -> displayAllLibraryBooks();
-//                    case "2" -> ;
+                    case "2" -> displayAvailableLibraryBooks();
 //                    case "3" -> ;
 //                    case "4" -> ;
                 }
             }
         }
+    }
+
+    public void displayAvailableLibraryBooks() {
+        List<Book> bookList = library.getAvailableBooks().stream().sorted(Comparator.comparing(Book::getBookID)).toList();
+        for (Book book : bookList) System.out.println(book.toString());
+    }
+
+    //Can be changed to display with certain ordering/grouping
+    public void displayAllLibraryBooks() {
+        List<Book> bookList = library.getBooks().stream().sorted(Comparator.comparing(Book::getBookID)).toList();
+        System.out.println("ID, Title, Author, Genre, Subgenre, Publisher, Times borrowed");
+        for (Book book : bookList) System.out.println(book.toString());
     }
 
     public void displayExitApplication() {
@@ -237,7 +250,7 @@ public class LibraryService {
 //
 //Login FINISHED
 //Register FINISHED
-//Display library books
+//Display library books FINISHED
 //Display available library books
 //Borrow a book
 //Run report -- preferably in CSV

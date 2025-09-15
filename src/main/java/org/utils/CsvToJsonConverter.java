@@ -16,7 +16,6 @@ public class CsvToJsonConverter {
         try {
             BufferedReader br = new BufferedReader(new FileReader(filePath.toFile()));
             String line;
-            //            System.lineSeparator(br);
             br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] fields = line.split(",");

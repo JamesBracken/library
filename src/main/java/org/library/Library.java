@@ -195,6 +195,6 @@ public class Library {
 // Add method handleBookLoanRequest FINISHED
 // Add method handleBookReturnRequest FINISHED
 // Find a way to generate a report of borrowed books
-// Add method FOR ADMINS generateBorrowedBooks
+// Add method FOR ADMINS
 
 

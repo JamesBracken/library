@@ -2,6 +2,7 @@ package org;
 
 import org.book.Book;
 import org.library.Library;
+import org.library.LibraryService;
 import org.user.User;
 import org.utils.CsvToJsonConverter;
 import org.utils.JsonReader;
@@ -55,10 +56,16 @@ public class Main {
         //TESTING BOOK LOAN BY USER
         testUser.borrowBook(myLibrary, 4);
         testUser.borrowBook(myLibrary, 3);
-        System.out.println("getBorrowedBooks: " + myLibrary.getBorrowedBooks());
+//        System.out.println("getBorrowedBooks: " + myLibrary.getBorrowedBooks());
         testUser.returnBook(myLibrary, 3);
-        System.out.println("getBorrowedBooks: " + myLibrary.getBorrowedBooks());
+//        System.out.println("getBorrowedBooks: " + myLibrary.getBorrowedBooks());
+
+
+        LibraryService libraryService = new LibraryService();
+        libraryService.initializeLibraryApplication(myLibrary);
     }
+
+
 }
 
 //PSEUDOCODE
@@ -80,7 +87,7 @@ public class Main {
 // Add method addBook FINISHED
 // Populate library users list using database FINISHED
 // Add method handleBookLoanRequest FINISHED
-// Add method handleBookReturnRequest
+// Add method handleBookReturnRequest FINISHED
 // Add persistence methods to load users/books here FINISHED
 // Find a way to generate a report of borrowed books
 // Add method FOR ADMINS generateBorrowedBooks
@@ -94,11 +101,6 @@ public class Main {
 //Landing menu - Login, Register
 //Main menu - Display library books, Display available books, Borrow a book
 //ADMIN Main menu - Display library books, Display available books, Borrow a book, Run report
-//
-//
-//
-//
-//
 //
 //
 //Login

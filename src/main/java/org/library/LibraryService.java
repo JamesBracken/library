@@ -206,9 +206,11 @@ public class LibraryService {
             while (true) {
                 userInput = scanner.nextLine().trim();
                 switch (userInput) {
+                    //Add cases return book and logout
                     case "1" -> displayAllLibraryBooks();
                     case "2" -> displayAvailableLibraryBooks();
                     case "3" -> handleBorrowBook();
+                    case "4" -> handleReturnBook();
                 }
             }
         } else {
@@ -218,8 +220,30 @@ public class LibraryService {
                     case "1" -> displayAllLibraryBooks();
                     case "2" -> displayAvailableLibraryBooks();
                     case "3" -> handleBorrowBook();
-//                    case "4" -> ;
+                    case "4" -> handleReturnBook();
                 }
+            }
+        }
+    }
+
+    public void handleBorrowBook() {
+        System.out.println("Please enter the ID of the book you would like to borrow, enter -1 to view all available books");
+        while (true) {
+            long userInputBookID;
+            try {
+                userInputBookID = Long.parseLong(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("You must input a valid number, Exception: " + e);
+                continue;
+            }
+            Book selectedBook = library.getAvailableBooks().stream().filter(book -> book.getBookID() == userInputBookID).findFirst().orElse(null);
+            if (userInputBookID == -1) {
+                displayAvailableLibraryBooks();
+            } else if (selectedBook != null) {
+                library.handleBookLoanRequest(userInputBookID, loggedInUser.getUserID());
+                System.out.println(library.getBorrowedBooks());
+            } else {
+                System.out.println("The Book with ID: " + userInputBookID + " cannot be found in our available books");
             }
         }
     }

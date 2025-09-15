@@ -7,16 +7,13 @@ import org.utils.JsonReader;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class LibraryService {
 
     private final Scanner scanner = new Scanner(System.in);
     private Library library = new Library();
-//    private User loggedInUser;
+    //    private User loggedInUser;
 //    TEMPORARILY SETTING A USER FOR TESTING
     private User loggedInUser = library.getUserByID(1);
 
@@ -43,12 +40,21 @@ public class LibraryService {
 
     public void handleStartMenuOptions() {
         boolean isHandlerActive = true;
-        String selectedMenuItem = scanner.nextLine().trim();
         while (isHandlerActive) {
+            int selectedMenuItem;
+            try {
+                selectedMenuItem = Integer.parseInt(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("You must input a valid number, Exception: " + e);
+                continue;
+            }
             switch (selectedMenuItem) {
-                case "1" -> promptUserLogin();
-                case "2" -> displayRegistration();
-                case "3" -> displayExitApplication();
+                case 1 -> promptUserLogin();
+                case 2 -> displayRegistration();
+                case 3 -> displayExitApplication();
+                default -> {
+                    System.out.println(selectedMenuItem + " is not a valid option");
+                }
             }
         }
     }
@@ -68,13 +74,12 @@ public class LibraryService {
             } catch (NumberFormatException e) {
                 System.out.println();
             } finally {
-                System.out.println("isValidID: " + isValidID);
                 if (isValidID) {
                     isHandlerActive = false;
-                    System.out.println("Valid id input");
-                    System.out.println("Must add display next menu");
                     loggedInUser = library.getUserByID(Long.parseLong(userInputID));
                     displayLoggedInUserMenuOptions();
+                } else {
+                    System.out.println(userInputID + " is an invalid ID");
                 }
             }
         }
@@ -194,7 +199,7 @@ public class LibraryService {
         handleLoggedInUserMenuOptions();
     }
 
-    //ADMIN Main menu - Display library books, Display available books, Borrow a book, Run report
+    //ADMIN Main menu - Display library books, Display available books, Borrow a book, Return a book, Run report
     public void handleLoggedInUserMenuOptions() {
         String userInput;
         if (!loggedInUser.isAdmin()) {
@@ -203,7 +208,7 @@ public class LibraryService {
                 switch (userInput) {
                     case "1" -> displayAllLibraryBooks();
                     case "2" -> displayAvailableLibraryBooks();
-//                    case "3" -> ;
+                    case "3" -> handleBorrowBook();
                 }
             }
         } else {
@@ -212,7 +217,7 @@ public class LibraryService {
                 switch (userInput) {
                     case "1" -> displayAllLibraryBooks();
                     case "2" -> displayAvailableLibraryBooks();
-//                    case "3" -> ;
+                    case "3" -> handleBorrowBook();
 //                    case "4" -> ;
                 }
             }
@@ -245,7 +250,7 @@ public class LibraryService {
 //LIBRARY SERVICE // menu type -- options
 //Landing menu - Login, Register FINISHED
 //Main menu - Display library books, Display available books, Borrow a book
-//ADMIN Main menu - Display library books, Display available books, Borrow a book, Run report
+//ADMIN Main menu - Display library books, Display available books, Borrow a book, Return a book, Run report
 //
 //
 //Login FINISHED
@@ -253,4 +258,5 @@ public class LibraryService {
 //Display library books FINISHED
 //Display available library books
 //Borrow a book
+//Return a book
 //Run report -- preferably in CSV

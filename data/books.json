@@ -5,7 +5,7 @@
   "genre" : " Jaideva\"",
   "subGenre" : "tech",
   "publisher" : "signal_processing",
-  "timesBorrowed" : 0
+  "timesBorrowed" : 1
 }, {
   "bookID" : 2,
   "title" : "Data Smart",
@@ -13,7 +13,7 @@
   "genre" : " John\"",
   "subGenre" : "tech",
   "publisher" : "data_science",
-  "timesBorrowed" : 0
+  "timesBorrowed" : 2
 }, {
   "bookID" : 3,
   "title" : "God Created the Integers",
@@ -21,7 +21,7 @@
   "genre" : " Stephen\"",
   "subGenre" : "tech",
   "publisher" : "mathematics",
-  "timesBorrowed" : 41
+  "timesBorrowed" : 42
 }, {
   "bookID" : 4,
   "title" : "Superfreakonomics",
@@ -29,7 +29,7 @@
   "genre" : " Stephen\"",
   "subGenre" : "science",
   "publisher" : "economics",
-  "timesBorrowed" : 46
+  "timesBorrowed" : 47
 }, {
   "bookID" : 5,
   "title" : "Orientalism",

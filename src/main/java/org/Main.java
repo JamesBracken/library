@@ -62,7 +62,11 @@ public class Main {
 
 
         LibraryService libraryService = new LibraryService();
+//        libraryService.initializeLibraryApplication(myLibrary);
+
+//        -----------------------------------TEMPORARY TESTING CODE--------------------
         libraryService.initializeLibraryApplication(myLibrary);
+        libraryService.handleLoggedInUserMenuOptions();
     }
 
 

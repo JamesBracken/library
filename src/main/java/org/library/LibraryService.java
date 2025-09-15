@@ -1,16 +1,24 @@
 package org.library;
 
+import org.book.Book;
 import org.user.User;
+import org.utils.JsonReader;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
 
 public class LibraryService {
 
     private final Scanner scanner = new Scanner(System.in);
-    private Library library;
+    private Library library = new Library();
+//    private User loggedInUser;
+//    TEMPORARILY SETTING A USER FOR TESTING
+    private User loggedInUser = library.getUserByID(1);
 
     public void initializeLibraryApplication(Library chosenLibrary) {
         //Add initialization logic such as setting up user and books lists with data
@@ -62,10 +70,11 @@ public class LibraryService {
             } finally {
                 System.out.println("isValidID: " + isValidID);
                 if (isValidID) {
-                    isHandlerActive = true;
+                    isHandlerActive = false;
                     System.out.println("Valid id input");
                     System.out.println("Must add display next menu");
-                    // DISPLAY NEXT MENU
+                    loggedInUser = library.getUserByID(Long.parseLong(userInputID));
+                    displayLoggedInUserMenuOptions();
                 }
             }
         }
@@ -92,6 +101,7 @@ public class LibraryService {
         library.registerUser(newUser);
         displayStartMenu();
     }
+
     // May add extra checks at the end to prompt user if all information is correct and if they want to restart
     public LocalDate promptUserDateOfBirth() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -163,6 +173,51 @@ public class LibraryService {
         }
     }
 
+    public void displayLoggedInUserMenuOptions() {
+        if (!loggedInUser.isAdmin()) {
+//ADMIN Main menu - Display library books, Display available books, Borrow a book, Run report
+            System.out.println("""
+                    You have now logged in, please choose an option
+                    1) Display all library books
+                    2) Display currently available books
+                    3) Borrow a book
+                    """);
+        } else {
+            System.out.println("""
+                    You have now logged in, please choose an option
+                    1) Display all library books
+                    2) Display currently available books
+                    3) Borrow a book
+                    4) Run a report
+                    """);
+        }
+        handleLoggedInUserMenuOptions();
+    }
+
+    public void handleLoggedInUserMenuOptions() {
+        String userInput;
+        if (!loggedInUser.isAdmin()) {
+            while (true) {
+                userInput = scanner.nextLine().trim();
+                switch (userInput) {
+                    case "1" -> displayAllLibraryBooks();
+//                    case "2" -> ;
+//                    case "3" -> ;
+                }
+            }
+        } else {
+            while (true) {
+                userInput = scanner.nextLine().trim();
+                switch (userInput) {
+                    case "1" -> displayAllLibraryBooks();
+//                    case "2" -> ;
+//                    case "3" -> ;
+//                    case "4" -> ;
+                }
+            }
+        }
+    }
+
     public void displayExitApplication() {
 
     }
@@ -175,13 +230,13 @@ public class LibraryService {
 
 
 //LIBRARY SERVICE // menu type -- options
-//Landing menu - Login, Register
+//Landing menu - Login, Register FINISHED
 //Main menu - Display library books, Display available books, Borrow a book
 //ADMIN Main menu - Display library books, Display available books, Borrow a book, Run report
 //
 //
-//Login
-//Register
+//Login FINISHED
+//Register FINISHED
 //Display library books
 //Display available library books
 //Borrow a book

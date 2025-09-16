@@ -23,4 +23,9 @@
   "name" : "Ken",
   "admin" : false,
   "dateOfBirth" : "1989-05-03"
+}, {
+  "userID" : 5,
+  "name" : "Alesia",
+  "admin" : true,
+  "dateOfBirth" : "2003-11-12"
 } ]

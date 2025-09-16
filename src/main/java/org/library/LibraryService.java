@@ -1,5 +1,6 @@
 package org.library;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import org.book.Book;
 import org.user.User;
 import org.utils.JsonReader;
@@ -12,6 +13,8 @@ import java.util.*;
 public class LibraryService {
 
     private final Scanner scanner = new Scanner(System.in);
+    private final Dotenv dotenv = Dotenv.configure().filename("vars.env").load();
+    private final String MASTER_PASSWORD = dotenv.get("MASTER_PASSWORD");
     private Library library = new Library();
     private User loggedInUser;
 
@@ -134,11 +137,10 @@ public class LibraryService {
         while (true) {
             String shouldUserBeAdmin = scanner.nextLine().trim().toLowerCase();
             if (shouldUserBeAdmin.equals("y")) {
-                String masterPassword = "12345"; // Temporarily placing here, to be moved to ENVIRONMENTAL VARIABLES file
                 while (true) {
                     System.out.println("To register this user as an admin kindly input the library master password: ");
                     String userInputMasterPassword = scanner.nextLine().trim().toLowerCase();
-                    if (!userInputMasterPassword.equals(masterPassword)) {
+                    if (!userInputMasterPassword.equals(MASTER_PASSWORD)) {
                         System.out.println("Incorrect master password");
                         while (true) {
                             System.out.println("Would you like to re-attempt to input the password? Please input 'y' or 'n'");
@@ -154,7 +156,7 @@ public class LibraryService {
                         }
                         continue;
                     }
-                    System.out.println("\n Master password successfully input \n");
+                    System.out.println("\n Master password successfully input ");
                     return true;
                 }
             } else if (shouldUserBeAdmin.equals("n")) {

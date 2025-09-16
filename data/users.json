@@ -33,4 +33,9 @@
   "name" : "Jimmy",
   "admin" : false,
   "dateOfBirth" : "2009-09-09"
+}, {
+  "userID" : 7,
+  "name" : "JIMBO",
+  "admin" : true,
+  "dateOfBirth" : "1111-11-11"
 } ]

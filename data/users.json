@@ -28,4 +28,9 @@
   "name" : "Alesia",
   "admin" : true,
   "dateOfBirth" : "2003-11-12"
+}, {
+  "userID" : 6,
+  "name" : "Jimmy",
+  "admin" : false,
+  "dateOfBirth" : "2009-09-09"
 } ]

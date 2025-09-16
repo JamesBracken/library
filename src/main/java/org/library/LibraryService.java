@@ -13,12 +13,9 @@ public class LibraryService {
 
     private final Scanner scanner = new Scanner(System.in);
     private Library library = new Library();
-    //    private User loggedInUser;
-//    TEMPORARILY SETTING A USER FOR TESTING
-    private User loggedInUser = library.getUserByID(1);
+    private User loggedInUser;
 
     public void initializeLibraryApplication(Library chosenLibrary) {
-        //Add initialization logic such as setting up user and books lists with data
         library = chosenLibrary;
         library.initializeLibraryBooksData();
         library.initializeLibraryUsersData();
@@ -29,6 +26,7 @@ public class LibraryService {
     public void displayStartMenu() {
         System.out.println(
                 """
+                        
                         Welcome to the library, to use our services you must have an account and login.
                         How may we be of service?
                         1) Login to my account
@@ -49,12 +47,16 @@ public class LibraryService {
                 continue;
             }
             switch (selectedMenuItem) {
-                case 1 -> promptUserLogin();
-                case 2 -> displayRegistration();
-                case 3 -> displayExitApplication();
-                default -> {
-                    System.out.println(selectedMenuItem + " is not a valid option");
+                case 1 -> {
+                    isHandlerActive = false;
+                    promptUserLogin();
                 }
+                case 2 -> {
+                    isHandlerActive = false;
+                    displayRegistration();
+                }
+                case 3 -> handleExitApplication();
+                default -> System.out.println(selectedMenuItem + " is not a valid option");
             }
         }
     }
@@ -190,6 +192,7 @@ public class LibraryService {
                     2) Display currently available books
                     3) Borrow a book
                     4) Return a book
+                    9) Logout
                     """);
         } else {
             System.out.println("""
@@ -200,6 +203,7 @@ public class LibraryService {
                     3) Borrow a book
                     4) Return a book
                     5) Run a report
+                    9) Logout
                     """);
         }
         handleLoggedInUserMenuOptions();
@@ -215,23 +219,28 @@ public class LibraryService {
                 switch (userInput) {
                     //Add cases return book and logout
                     case "1" -> {
-                        displayAllLibraryBooks();
                         isHandlerActive = false;
+                        displayAllLibraryBooks();
                         displayLoggedInUserMenuOptions();
                     }
                     case "2" -> {
-                        displayAvailableLibraryBooks();
                         isHandlerActive = false;
+                        displayAvailableLibraryBooks();
                         displayLoggedInUserMenuOptions();
                     }
                     case "3" -> {
-                        handleBorrowBook();
                         isHandlerActive = false;
+                        handleBorrowBook();
                     }
                     case "4" -> {
-                        handleReturnBook();
                         isHandlerActive = false;
+                        handleReturnBook();
                     }
+                    case "9" -> {
+                        isHandlerActive = false;
+                        handleUserLogout();
+                    }
+                    default -> System.out.println("\n" + userInput + " is not a valid option ");
                 }
             }
         } else {
@@ -240,31 +249,36 @@ public class LibraryService {
                 userInput = scanner.nextLine().trim();
                 switch (userInput) {
                     case "1" -> {
-                        displayAllLibraryBooks();
                         isHandlerActive = false;
+                        displayAllLibraryBooks();
                         displayLoggedInUserMenuOptions();
                     }
                     case "2" -> {
-                        displayAvailableLibraryBooks();
                         isHandlerActive = false;
+                        displayAvailableLibraryBooks();
                         displayLoggedInUserMenuOptions();
                     }
                     case "3" -> {
-                        handleBorrowBook();
                         isHandlerActive = false;
+                        handleBorrowBook();
                     }
                     case "4" -> {
-                        handleReturnBook();
                         isHandlerActive = false;
+                        handleReturnBook();
                     }
                     //Add run report option
+                    case "9" -> {
+                        isHandlerActive = false;
+                        handleUserLogout();
+                    }
+                    default -> System.out.println("\n" + userInput + " is not a valid option ");
                 }
             }
         }
     }
 
     public void handleReturnBook() {
-        System.out.println("Please enter the ID of the book you would like to return, enter -1 to view the books you have borrowed");
+        System.out.println("Please enter the ID of the book you would like to return, enter -1 to view the books you have borrowed or -9 to return to the previous menu");
         boolean isHandlerActive = true;
         while (isHandlerActive) {
             long userInputBookID;
@@ -274,6 +288,10 @@ public class LibraryService {
                 System.out.println("You must input a valid number, Exception: " + e);
                 continue;
             }
+            if(userInputBookID == -9) {
+                isHandlerActive = false;
+                displayLoggedInUserMenuOptions();
+            };
             Book selectedBook = null;
             if (library.getBorrowedBooks().containsKey(loggedInUser)) {
                 selectedBook = library.getBorrowedBooks().get(loggedInUser).stream().filter(book -> book.getBookID() == userInputBookID).findFirst().orElse(null); // .getAvailableBooks().stream().filter(book -> book.getBookID() == userInputBookID).findFirst().orElse(null);
@@ -286,17 +304,17 @@ public class LibraryService {
                 System.out.println(library.getBorrowedBooks().get(loggedInUser));
             } else if (selectedBook != null) {
                 library.handleBookReturnRequest(userInputBookID, loggedInUser.getUserID());
+                System.out.println("You have successfully returned the book with ID: " + userInputBookID + ", Title: " + selectedBook.getTitle());
                 isHandlerActive = false;
             } else {
                 System.out.println("The Book with ID: " + userInputBookID + " cannot be found in your borrowed books");
-                break;
             }
         }
         displayLoggedInUserMenuOptions();
     }
 
     public void handleBorrowBook() {
-        System.out.println("Please enter the ID of the book you would like to borrow, enter -1 to view all available books");
+        System.out.println("Please enter the ID of the book you would like to borrow, enter -1 to view all available books or -9 to go return to the previous menu");
         boolean isHandlerActive = true;
         while (isHandlerActive) {
             long userInputBookID;
@@ -307,10 +325,16 @@ public class LibraryService {
                 continue;
             }
             Book selectedBook = library.getAvailableBooks().stream().filter(book -> book.getBookID() == userInputBookID).findFirst().orElse(null);
+            if(userInputBookID == -9) {
+                isHandlerActive = false;
+                displayLoggedInUserMenuOptions();
+            }
             if (userInputBookID == -1) {
                 displayAvailableLibraryBooks();
+                System.out.println("Please enter the ID of the book you would like to borrow, enter -1 to view all available books or -9 to go return to the previous menu");
             } else if (selectedBook != null) {
                 library.handleBookLoanRequest(userInputBookID, loggedInUser.getUserID());
+                System.out.println("You have successfully borrowed the book with ID: " + userInputBookID + ", Title: " + selectedBook.getTitle());
                 isHandlerActive = false;
             } else {
                 System.out.println("The Book with ID: " + userInputBookID + " cannot be found in our available books");
@@ -331,12 +355,14 @@ public class LibraryService {
         for (Book book : bookList) System.out.println(book.toString());
     }
 
-    public void displayExitApplication() {
-
+    public void handleUserLogout() {
+        loggedInUser = null; // Resetting global variable
+        displayStartMenu();
     }
 
     public void handleExitApplication() {
-
+        System.out.println("Thank you for using our library");
+        System.exit(0);
     }
 
 }

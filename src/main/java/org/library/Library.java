@@ -174,6 +174,10 @@ public class Library {
         return getUsers().stream().filter(user -> user.getUserID() == ID).findFirst().orElse(null);
     }
 
+    public Book getBookByID(long ID) {
+        return getBooks().stream().filter(book -> book.getBookID() == ID).findFirst().orElse(null);
+    }
+
     public void updateBookTimesBorrowed(Book book) {
         book.setTimesBorrowed(book.getTimesBorrowed() + 1);
         JsonWriter.updateInJsonFile(book, getBOOK_FILE_PATH(), Book[].class, Book::getBookID);

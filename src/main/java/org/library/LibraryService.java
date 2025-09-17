@@ -3,12 +3,15 @@ package org.library;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.book.Book;
 import org.user.User;
+import org.utils.CsvWriter;
 import org.utils.JsonReader;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class LibraryService {
 
@@ -204,7 +207,8 @@ public class LibraryService {
                     2) Display currently available books
                     3) Borrow a book
                     4) Return a book
-                    5) Run a report
+                    5) Create a report of all currently borrowed books
+                    6) Create a report for an individual specified book
                     9) Logout
                     """);
         }
@@ -268,7 +272,14 @@ public class LibraryService {
                         isHandlerActive = false;
                         handleReturnBook();
                     }
-                    //Add run report option
+                    case "5" -> {
+                        isHandlerActive = false;
+                        produceAllBorrowedBooksReport();
+                    }
+                    case "6" -> {
+                        isHandlerActive = false;
+                        produceSpecifiedBorrowedBookReport();
+                    }
                     case "9" -> {
                         isHandlerActive = false;
                         handleUserLogout();
@@ -277,6 +288,77 @@ public class LibraryService {
                 }
             }
         }
+    }
+
+    public void produceSpecifiedBorrowedBookReport() {
+        boolean isHandlerActive = true;
+        String[] header = {"Report of the specified book from this library", "\n \nTitle ", "Author ", "Genre ", "Sub Genre ", "Publisher ", " Times Borrowed"};
+        System.out.println("Please input the ID of the book you would like to produce a report for, you can input -1 to view all our books and -9 to go to the previous menu");
+        long userInputBookID;
+        while (isHandlerActive) {
+            try {
+                userInputBookID = Long.parseLong(scanner.nextLine().trim());
+                Book selectedBook = library.getBookByID(userInputBookID);
+                if(userInputBookID == -1) {
+                    displayAllLibraryBooks();
+                    System.out.println("\nPlease input the ID of the book you would like to produce a report for, you can input -1 to view all our books and -9 to go to the previous menu");
+                    continue;
+                }
+                if (userInputBookID == -9) {
+                    isHandlerActive = false;
+                    displayLoggedInUserMenuOptions();
+                    break;
+                }
+                if (selectedBook == null) {
+                    System.out.println("There is no book with the ID: " + userInputBookID);
+                    continue;
+                }
+                List<List<String>> borrowedBooksList = library.getBooks().stream().filter(book -> book.getBookID() == selectedBook.getBookID())
+                        .map(book -> Arrays.asList(
+                                String.valueOf(book.getBookID()),
+                                book.getTitle(),
+                                book.getAuthor(),
+                                book.getGenre(),
+                                book.getSubGenre(),
+                                book.getPublisher(),
+                                String.valueOf(book.getTimesBorrowed()))
+                        ).toList();
+                CsvWriter.writeIndividualItemToCsvFile(borrowedBooksList, "data/individual_book.csv", header);
+                System.out.println("\n Report successfully produced");
+                displayLoggedInUserMenuOptions();
+            } catch (NumberFormatException e) {
+                System.out.println("Your input is not a valid, Exception: " + e);
+            }
+        }
+    }
+
+    public void produceAllBorrowedBooksReport() {
+        //Extra validation
+        if (loggedInUser == null) return;
+        if (!loggedInUser.isAdmin()) {
+            System.out.println("You must be an admin to run reports");
+            return;
+        }
+        ;
+        String[] header = {"Report of all books currently borrowed from this library", "\n \nTitle ", "Author ", "Genre ", "Sub Genre ", "Publisher ", " Times Borrowed"};
+        List<List<String>> borrowedBooksList = library.getBorrowedBooks().values().stream().flatMap(Set::stream).sorted(Comparator.comparing(Book::getBookID)).map(
+                book -> Arrays.asList(
+                        String.valueOf(book.getBookID()),
+                        book.getTitle(),
+                        book.getAuthor(),
+                        book.getGenre(),
+                        book.getSubGenre(),
+                        book.getPublisher(),
+                        String.valueOf(book.getTimesBorrowed()))
+        ).toList();
+        if (borrowedBooksList.stream().count() == 0) {
+            System.out.println("There are currently no books borrowed and the report will not be produced");
+            displayLoggedInUserMenuOptions();
+            return;
+        }
+        System.out.println("\n Report successfully produced");
+        CsvWriter.writeToCsvFile(borrowedBooksList, "data/books.csv", header);
+        displayLoggedInUserMenuOptions();
     }
 
     public void handleReturnBook() {
@@ -290,10 +372,10 @@ public class LibraryService {
                 System.out.println("You must input a valid number, Exception: " + e);
                 continue;
             }
-            if(userInputBookID == -9) {
+            if (userInputBookID == -9) {
                 isHandlerActive = false;
                 displayLoggedInUserMenuOptions();
-            };
+            }
             Book selectedBook = null;
             if (library.getBorrowedBooks().containsKey(loggedInUser)) {
                 selectedBook = library.getBorrowedBooks().get(loggedInUser).stream().filter(book -> book.getBookID() == userInputBookID).findFirst().orElse(null); // .getAvailableBooks().stream().filter(book -> book.getBookID() == userInputBookID).findFirst().orElse(null);
@@ -327,7 +409,7 @@ public class LibraryService {
                 continue;
             }
             Book selectedBook = library.getAvailableBooks().stream().filter(book -> book.getBookID() == userInputBookID).findFirst().orElse(null);
-            if(userInputBookID == -9) {
+            if (userInputBookID == -9) {
                 isHandlerActive = false;
                 displayLoggedInUserMenuOptions();
             }
@@ -350,7 +432,6 @@ public class LibraryService {
         for (Book book : bookList) System.out.println(book.toString());
     }
 
-    //Can be changed to display with certain ordering/grouping
     public void displayAllLibraryBooks() {
         List<Book> bookList = library.getBooks().stream().sorted(Comparator.comparing(Book::getBookID)).toList();
         System.out.println("ID, Title, Author, Genre, Subgenre, Publisher, Times borrowed");
@@ -366,20 +447,4 @@ public class LibraryService {
         System.out.println("Thank you for using our library");
         System.exit(0);
     }
-
 }
-
-
-//LIBRARY SERVICE // menu type -- options
-//Landing menu - Login, Register FINISHED
-//Main menu - Display library books, Display available books, Borrow a book
-//ADMIN Main menu - Display library books, Display available books, Borrow a book, Return a book, Run report
-//
-//
-//Login FINISHED
-//Register FINISHED
-//Display library books FINISHED
-//Display available library books FINISHED
-//Borrow a book FINISHED
-//Return a book
-//Run report -- preferably in CSV

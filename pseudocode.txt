@@ -1,0 +1,53 @@
+
+PSEUDOCODE
+
+ Create a java library project FINISHED
+ Create 3 different packages revolving around Book, Library and User FINISHED
+ Find a way to parse the CSV format into JSON and write the data to a JSON file using java FINISHED
+ Find a way to write data to a JSON file using java FINISHED
+
+BOOK
+ Add properties of number, title, author, genre, subGenre, publisher, timesBorrowed FINISHED
+
+
+LIBRARY
+ Add properties of availableBooks, borrowedBooks < k, v > < user, Set<book>>, books FINISHED
+ Add method registerUser FINISHED
+ Find a way to make write users to a JSON file FINISHED
+ Populate library books list using database FINISHED
+ Add method addBook FINISHED
+ Populate library users list using database FINISHED
+ Add method handleBookLoanRequest FINISHED
+ Add method handleBookReturnRequest FINISHED
+ Add persistence methods to load users/books here FINISHED
+ Find a way to generate a report of borrowed books
+ Add method FOR ADMINS generateBorrowedBooks
+
+USER
+ Add properties of userId, name, isAdmin, dateOfBirth FINISHED
+ Add method borrowBook FINISHED
+ Add method returnBook
+
+LIBRARY SERVICE // menu type -- options
+Landing menu - Login, Register
+Main menu - Display library books, Display available books, Borrow a book
+ADMIN Main menu - Display library books, Display available books, Borrow a book, Run report
+
+
+Login
+Register
+Display library books
+Display available library books
+Borrow a book
+Run report -- preferably in CSV
+
+
+POSSIBLE BUGS, TESTING, CHECKS, FIXES NEEDED
+ Test if database can hold duplicate books (Specifically id)
+ Ensure library data is re-initialised when database is updated
+
+
+OPTIONAL EXTENSIONS
+Find book by genre, title, author, publisher,
+Book to be returned within a specific timeframe decided by the library
+Book borrow extension if book loan timeframe is implemented

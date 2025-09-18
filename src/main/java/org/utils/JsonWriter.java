@@ -1,0 +1,68 @@
+package org.utils;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class JsonWriter {
+    public static final ObjectMapper mapper = new ObjectMapper()
+            .registerModule(new JavaTimeModule())
+            .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+
+    public static void writeToJsonFile(Object data, Path filePath) {
+        try {
+            mapper.writerWithDefaultPrettyPrinter().writeValue(new File(filePath.toUri()), data);
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to write JSON to: " + filePath + " Exception: " + e);
+        }
+    }
+
+    public static <T> void appendToJsonFile(T newData, Path filePath, Class<T[]> clazz) {
+        try {
+            File file = filePath.toFile();
+            ObjectMapper mapper = JsonWriter.mapper;
+            T[] existingData;
+
+            existingData = file.exists() && file.length() > 0
+                    ? mapper.readValue(file, clazz)
+                    : (T[]) java.lang.reflect.Array.newInstance(clazz.getComponentType(), 0);
+
+            List<T> dataList = new ArrayList<>(Arrays.asList(existingData));
+            dataList.add(newData);
+            writeToJsonFile(dataList, filePath);
+
+        } catch (IOException | NegativeArraySizeException e) {
+            throw new RuntimeException("Failed to append JSON to: " + filePath + " Exception: " + e);
+        }
+    }
+
+    public static <T> void updateInJsonFile(T updatedObjectData, Path filePath, Class<T[]> clazz, java.util.function.Function<T, Long> idExtractor) {
+        try {
+            File file = filePath.toFile();
+            ObjectMapper mapper = JsonWriter.mapper;
+
+            T[] existingData = file.exists() && file.length() > 0
+                    ? mapper.readValue(file, clazz)
+                    : (T[]) java.lang.reflect.Array.newInstance(clazz.getComponentType(), 0);
+
+            List<T> dataList = new ArrayList<>(Arrays.asList(existingData));
+
+            for (int i = 0; i < existingData.length; i++) {
+                if(idExtractor.apply(dataList.get(i)).equals(idExtractor.apply(updatedObjectData))) {
+                    dataList.set(i, updatedObjectData);
+                    break;
+                }
+            }
+            writeToJsonFile(dataList, filePath);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to update JSON in: " + filePath + " Exception: " + e);
+        }
+    }
+}

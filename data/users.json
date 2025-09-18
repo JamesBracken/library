@@ -1,0 +1,41 @@
+[ {
+  "userID" : 0,
+  "name" : "James",
+  "admin" : true,
+  "dateOfBirth" : "1982-07-03"
+}, {
+  "userID" : 1,
+  "name" : "Christopher",
+  "admin" : true,
+  "dateOfBirth" : "1982-07-03"
+}, {
+  "userID" : 2,
+  "name" : "Johnny",
+  "admin" : true,
+  "dateOfBirth" : "2001-01-01"
+}, {
+  "userID" : 3,
+  "name" : "Jenny",
+  "admin" : false,
+  "dateOfBirth" : "2004-05-01"
+}, {
+  "userID" : 4,
+  "name" : "Ken",
+  "admin" : false,
+  "dateOfBirth" : "1989-05-03"
+}, {
+  "userID" : 5,
+  "name" : "Alesia",
+  "admin" : true,
+  "dateOfBirth" : "2003-11-12"
+}, {
+  "userID" : 6,
+  "name" : "Jimmy",
+  "admin" : false,
+  "dateOfBirth" : "2009-09-09"
+}, {
+  "userID" : 7,
+  "name" : "JIMBO",
+  "admin" : true,
+  "dateOfBirth" : "1111-11-11"
+} ]

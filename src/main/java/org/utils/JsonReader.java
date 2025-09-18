@@ -1,0 +1,18 @@
+package org.utils;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+
+import static org.utils.JsonWriter.mapper;
+
+public class JsonReader {
+
+    public static <T> T readFromJsonFile(Path filePath, Class<T> clazz) {
+        try {
+            return mapper.readValue(new File(filePath.toUri()), clazz);
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to read JSON from: " + filePath + " Exception: " + e);
+        }
+    }
+}

@@ -13,10 +13,6 @@ public class User {
     private boolean isAdmin;
     private LocalDate dateOfBirth;
 
-    public static void setIDCount(long IDCount) {
-        User.IDCount = IDCount;
-    }
-
     public User() {
 
     }
@@ -41,6 +37,10 @@ public class User {
         this.dateOfBirth = dateOfBirth;
 
         IDCount++;
+    }
+
+    public static void setIDCount(long IDCount) {
+        User.IDCount = IDCount;
     }
 
     public static long getIDCount() {

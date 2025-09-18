@@ -19,7 +19,6 @@ public class Library {
     private final Path BOOK_FILE_PATH = Paths.get("data", "books.json");
     private final Path CSV_BOOK_FILE_PATH = Paths.get("data", "books_data.csv");
 
-
     private Set<Book> books = new HashSet<>();
     private Set<Book> availableBooks = new HashSet<>();
     private Map<User, Set<Book>> borrowedBooks = new HashMap<>();

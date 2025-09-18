@@ -18,6 +18,7 @@ public class LibraryService {
     private final Scanner scanner = new Scanner(System.in);
     private final Dotenv dotenv = Dotenv.configure().filename("vars.env").load();
     private final String MASTER_PASSWORD = dotenv.get("MASTER_PASSWORD");
+
     private Library library = new Library();
     private User loggedInUser;
 
@@ -143,6 +144,8 @@ public class LibraryService {
     }
 
     public boolean promptUserIsAdmin() {
+        // true booleans used in this method instead of boolean flags because loops are exited
+        // through returns and breaks
         System.out.println("Should this user be set up with admin rights? y/n");
         while (true) {
             String shouldUserBeAdmin = scanner.nextLine().trim().toLowerCase();
@@ -196,7 +199,6 @@ public class LibraryService {
 
     public void displayLoggedInUserMenuOptions() {
         if (!loggedInUser.isAdmin()) {
-//ADMIN Main menu - Display library books, Display available books, Borrow a book, Run report
             System.out.println("""
                     
                     Please choose an option
@@ -229,7 +231,6 @@ public class LibraryService {
             while (isHandlerActive) {
                 userInput = scanner.nextLine().trim();
                 switch (userInput) {
-                    //Add cases return book and logout
                     case "1" -> {
                         isHandlerActive = false;
                         displayAllLibraryBooks();
@@ -304,7 +305,7 @@ public class LibraryService {
             try {
                 userInputBookID = Long.parseLong(scanner.nextLine().trim());
                 Book selectedBook = library.getBookByID(userInputBookID);
-                if(userInputBookID == -1) {
+                if (userInputBookID == -1) {
                     displayAllLibraryBooks();
                     System.out.println("\nPlease input the ID of the book you would like to produce a report for, you can input -1 to view all our books and -9 to go to the previous menu");
                     continue;
@@ -369,6 +370,7 @@ public class LibraryService {
         boolean isHandlerActive = true;
         while (isHandlerActive) {
             long userInputBookID;
+            Book selectedBook = null;
             try {
                 userInputBookID = Long.parseLong(scanner.nextLine().trim());
             } catch (NumberFormatException e) {
@@ -379,7 +381,6 @@ public class LibraryService {
                 isHandlerActive = false;
                 displayLoggedInUserMenuOptions();
             }
-            Book selectedBook = null;
             if (library.getBorrowedBooks().containsKey(loggedInUser)) {
                 selectedBook = library.getBorrowedBooks().get(loggedInUser).stream().filter(book -> book.getBookID() == userInputBookID).findFirst().orElse(null);
             }
@@ -391,7 +392,6 @@ public class LibraryService {
                 System.out.println(library.getBorrowedBooks().get(loggedInUser));
             } else if (selectedBook != null) {
                 loggedInUser.returnBook(library, userInputBookID);
-                //library.handleBookReturnRequest(userInputBookID, loggedInUser.getUserID());
                 System.out.println("You have successfully returned the book with ID: " + userInputBookID + ", Title: " + selectedBook.getTitle());
                 isHandlerActive = false;
             } else {

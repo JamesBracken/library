@@ -25,8 +25,6 @@ public class Library {
     private Map<User, Set<Book>> borrowedBooks = new HashMap<>();
     private Set<User> users = new HashSet<>();
 
-//May not need this or might have to change it
-
     public Library() {
     }
 
@@ -76,7 +74,6 @@ public class Library {
         JsonWriter.appendToJsonFile(user, USER_FILE_PATH, User[].class);
     }
 
-
     @Override
     public String toString() {
         return "Library{" +
@@ -91,7 +88,6 @@ public class Library {
         if (items.isEmpty()) return;
 
         Object firstItem = items.getFirst();
-
         if (firstItem instanceof User) {
             @SuppressWarnings("unchecked")
             List<User> users = (List<User>) items;
@@ -109,7 +105,6 @@ public class Library {
         }
     }
 
-    //Populate library books list using database
     public void initializeLibraryBooksData() {
         try {
             File file = BOOK_FILE_PATH.toFile();
@@ -121,7 +116,6 @@ public class Library {
         }
     }
 
-    //Populate library users list using database
     public void initializeLibraryUsersData() {
         try {
             File file = USER_FILE_PATH.toFile();
@@ -132,12 +126,10 @@ public class Library {
         }
     }
 
-    //Add book method
     public void addNewBook(Book book) {
         books.add(book);
         availableBooks.add(book);
         JsonWriter.appendToJsonFile(book, BOOK_FILE_PATH, Book[].class);
-        //Adjust the IDCount for book
         this.initializeIDCount(List.of(JsonReader.readFromJsonFile(BOOK_FILE_PATH, Book[].class)));
     }
 
@@ -159,7 +151,8 @@ public class Library {
             User user = getUserByID(userID);
             if (user == null) throw new IllegalArgumentException("The user with ID: " + userID + " cannot be found");
             Set<Book> userBorrowedBookSet = getBorrowedBooks().get(user);
-            if (userBorrowedBookSet == null) throw new RuntimeException("You may not attempt to return a book if you have not borrowed any books");
+            if (userBorrowedBookSet == null)
+                throw new RuntimeException("You may not attempt to return a book if you have not borrowed any books");
             Book book = userBorrowedBookSet.stream().filter(currentBook -> currentBook.getBookID() == bookID).findFirst().orElse(null);
             if (book == null) throw new IllegalArgumentException("The book with ID: " + bookID + " cannot be found");
 
@@ -182,19 +175,4 @@ public class Library {
         book.setTimesBorrowed(book.getTimesBorrowed() + 1);
         JsonWriter.updateInJsonFile(book, getBOOK_FILE_PATH(), Book[].class, Book::getBookID);
     }
-
 }
-
-// Add properties of availableBooks, borrowedBooks < k, v > < user, Set<book>>, books FINISHED
-// Add method registerUser FINISHED
-// Find a way to make write users to a JSON file FINISHED
-// Populate library books list using database FINISHED
-// Add method addBook FINISHED
-// Populate library users list using database FINISHED
-// Add persistence methods to load users/books here FINISHED
-// Add method handleBookLoanRequest FINISHED
-// Add method handleBookReturnRequest FINISHED
-// Find a way to generate a report of borrowed books
-// Add method FOR ADMINS
-
-

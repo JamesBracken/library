@@ -3,8 +3,6 @@ package org.book;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.time.LocalDate;
-
 public class Book {
     private long bookID;
     private String title;
@@ -97,6 +95,3 @@ public class Book {
                 ", " + timesBorrowed ;
     }
 }
-
-
-// Add properties of number, title, author, genre, subGenre, publisher, timesBorrowed FINISHED

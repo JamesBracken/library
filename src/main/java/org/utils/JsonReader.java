@@ -1,7 +1,5 @@
 package org.utils;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -17,5 +15,4 @@ public class JsonReader {
             throw new RuntimeException("Failed to read JSON from: " + filePath + " Exception: " + e);
         }
     }
-
 }

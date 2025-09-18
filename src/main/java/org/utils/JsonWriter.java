@@ -28,39 +28,32 @@ public class JsonWriter {
         try {
             File file = filePath.toFile();
             ObjectMapper mapper = JsonWriter.mapper;
+            T[] existingData;
 
-            @SuppressWarnings("unchecked")
-            T[] existingData = file.exists() && file.length() > 0
+            existingData = file.exists() && file.length() > 0
                     ? mapper.readValue(file, clazz)
                     : (T[]) java.lang.reflect.Array.newInstance(clazz.getComponentType(), 0);
 
             List<T> dataList = new ArrayList<>(Arrays.asList(existingData));
             dataList.add(newData);
-
             writeToJsonFile(dataList, filePath);
 
-        } catch (IOException e) {
+        } catch (IOException | NegativeArraySizeException e) {
             throw new RuntimeException("Failed to append JSON to: " + filePath + " Exception: " + e);
         }
     }
 
     public static <T> void updateInJsonFile(T updatedObjectData, Path filePath, Class<T[]> clazz, java.util.function.Function<T, Long> idExtractor) {
-        // Get the object we want to update
-        // Data we want to update on that object
-        // Data to replace the old data
-
         try {
             File file = filePath.toFile();
             ObjectMapper mapper = JsonWriter.mapper;
 
-            @SuppressWarnings("unchecked")
             T[] existingData = file.exists() && file.length() > 0
                     ? mapper.readValue(file, clazz)
                     : (T[]) java.lang.reflect.Array.newInstance(clazz.getComponentType(), 0);
 
             List<T> dataList = new ArrayList<>(Arrays.asList(existingData));
 
-            // Loop through data and tweak item if found in the database
             for (int i = 0; i < existingData.length; i++) {
                 if(idExtractor.apply(dataList.get(i)).equals(idExtractor.apply(updatedObjectData))) {
                     dataList.set(i, updatedObjectData);

@@ -2,12 +2,7 @@ package org.user;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.book.Book;
 import org.library.Library;
-import org.utils.JsonWriter;
-
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDate;
 
 public class User {
@@ -24,10 +19,6 @@ public class User {
 
     public User() {
 
-    }
-
-    public static long getIDCount() {
-        return IDCount;
     }
 
     @JsonCreator
@@ -50,6 +41,10 @@ public class User {
         this.dateOfBirth = dateOfBirth;
 
         IDCount++;
+    }
+
+    public static long getIDCount() {
+        return IDCount;
     }
 
     public long getUserID() {
@@ -87,7 +82,3 @@ public class User {
         library.handleBookReturnRequest(bookID, this.userID);
     }
 }
-
-// Add properties of userId, name, isAdmin, dateOfBirth FINISHED
-// Add method borrowBook
-// Add method returnBook

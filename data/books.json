@@ -5,7 +5,7 @@
   "genre" : " Jaideva\"",
   "subGenre" : "tech",
   "publisher" : "signal_processing",
-  "timesBorrowed" : 26
+  "timesBorrowed" : 27
 }, {
   "bookID" : 2,
   "title" : "Data Smart",
@@ -21,7 +21,7 @@
   "genre" : " Stephen\"",
   "subGenre" : "tech",
   "publisher" : "mathematics",
-  "timesBorrowed" : 48
+  "timesBorrowed" : 49
 }, {
   "bookID" : 4,
   "title" : "Superfreakonomics",
@@ -29,7 +29,7 @@
   "genre" : " Stephen\"",
   "subGenre" : "science",
   "publisher" : "economics",
-  "timesBorrowed" : 52
+  "timesBorrowed" : 55
 }, {
   "bookID" : 5,
   "title" : "Orientalism",

@@ -6,12 +6,12 @@ import org.user.User;
 import org.utils.CsvWriter;
 import org.utils.JsonReader;
 
-import java.io.Serializable;
+import java.io.File;
+import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class LibraryService {
 
@@ -22,6 +22,15 @@ public class LibraryService {
     private User loggedInUser;
 
     public void initializeLibraryApplication(Library chosenLibrary) {
+        Path userFilePath = library.getUSER_FILE_PATH();
+        File userFile = userFilePath.toFile();
+        Path bookFilePath = library.getBOOK_FILE_PATH();
+        File bookFile = bookFilePath.toFile();
+
+        if (bookFile.length() > 0)
+            library.initializeIDCount(List.of(JsonReader.readFromJsonFile(bookFilePath, Book[].class)));
+        if (userFile.length() > 0)
+            library.initializeIDCount(List.of(JsonReader.readFromJsonFile(userFilePath, User[].class)));
         library = chosenLibrary;
         library.initializeLibraryBooksData();
         library.initializeLibraryUsersData();
@@ -117,7 +126,6 @@ public class LibraryService {
         displayStartMenu();
     }
 
-    // May add extra checks at the end to prompt user if all information is correct and if they want to restart
     public LocalDate promptUserDateOfBirth() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -134,7 +142,6 @@ public class LibraryService {
         }
     }
 
-    // Can improve security by adding a limit on password attempts, maybe exit application after
     public boolean promptUserIsAdmin() {
         System.out.println("Should this user be set up with admin rights? y/n");
         while (true) {
@@ -215,11 +222,10 @@ public class LibraryService {
         handleLoggedInUserMenuOptions();
     }
 
-    //ADMIN Main menu - Display library books, Display available books, Borrow a book, Return a book, Run report
     public void handleLoggedInUserMenuOptions() {
         String userInput;
+        boolean isHandlerActive = true;
         if (!loggedInUser.isAdmin()) {
-            boolean isHandlerActive = true;
             while (isHandlerActive) {
                 userInput = scanner.nextLine().trim();
                 switch (userInput) {
@@ -250,7 +256,6 @@ public class LibraryService {
                 }
             }
         } else {
-            boolean isHandlerActive = true;
             while (isHandlerActive) {
                 userInput = scanner.nextLine().trim();
                 switch (userInput) {
@@ -333,13 +338,11 @@ public class LibraryService {
     }
 
     public void produceAllBorrowedBooksReport() {
-        //Extra validation
         if (loggedInUser == null) return;
         if (!loggedInUser.isAdmin()) {
             System.out.println("You must be an admin to run reports");
             return;
         }
-        ;
         String[] header = {"Report of all books currently borrowed from this library", "\n \nTitle ", "Author ", "Genre ", "Sub Genre ", "Publisher ", " Times Borrowed"};
         List<List<String>> borrowedBooksList = library.getBorrowedBooks().values().stream().flatMap(Set::stream).sorted(Comparator.comparing(Book::getBookID)).map(
                 book -> Arrays.asList(
@@ -351,7 +354,7 @@ public class LibraryService {
                         book.getPublisher(),
                         String.valueOf(book.getTimesBorrowed()))
         ).toList();
-        if (borrowedBooksList.stream().count() == 0) {
+        if ((long) borrowedBooksList.size() == 0) {
             System.out.println("There are currently no books borrowed and the report will not be produced");
             displayLoggedInUserMenuOptions();
             return;
@@ -378,16 +381,17 @@ public class LibraryService {
             }
             Book selectedBook = null;
             if (library.getBorrowedBooks().containsKey(loggedInUser)) {
-                selectedBook = library.getBorrowedBooks().get(loggedInUser).stream().filter(book -> book.getBookID() == userInputBookID).findFirst().orElse(null); // .getAvailableBooks().stream().filter(book -> book.getBookID() == userInputBookID).findFirst().orElse(null);
+                selectedBook = library.getBorrowedBooks().get(loggedInUser).stream().filter(book -> book.getBookID() == userInputBookID).findFirst().orElse(null);
             }
             if (userInputBookID == -1) {
-                if (selectedBook == null) {
+                if (library.getBorrowedBooks().get(loggedInUser) == null) {
                     System.out.println("You have not borrowed any books");
                     continue;
                 }
                 System.out.println(library.getBorrowedBooks().get(loggedInUser));
             } else if (selectedBook != null) {
-                library.handleBookReturnRequest(userInputBookID, loggedInUser.getUserID());
+                loggedInUser.returnBook(library, userInputBookID);
+                //library.handleBookReturnRequest(userInputBookID, loggedInUser.getUserID());
                 System.out.println("You have successfully returned the book with ID: " + userInputBookID + ", Title: " + selectedBook.getTitle());
                 isHandlerActive = false;
             } else {
@@ -417,7 +421,7 @@ public class LibraryService {
                 displayAvailableLibraryBooks();
                 System.out.println("Please enter the ID of the book you would like to borrow, enter -1 to view all available books or -9 to go return to the previous menu");
             } else if (selectedBook != null) {
-                library.handleBookLoanRequest(userInputBookID, loggedInUser.getUserID());
+                loggedInUser.borrowBook(library, userInputBookID);
                 System.out.println("You have successfully borrowed the book with ID: " + userInputBookID + ", Title: " + selectedBook.getTitle());
                 isHandlerActive = false;
             } else {
